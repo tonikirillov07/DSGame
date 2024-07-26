@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="61cc59a3-8ae6-4453-adb0-e7c7693db885" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fonts/ARCADECLASSIC.TTF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/jpct/jpct.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/lwjgl-2.8.0/doc/3rdparty/jinput_license.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/lwjgl-2.8.0/doc/3rdparty/jogl_license.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/lwjgl-2.8.0/doc/3rdparty/lzma_license.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/lwjgl-2.8.0/doc/3rdparty/openal_license.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/lwjgl-2.8.0/doc/CREDITS" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/lwjgl-2.8.0/doc/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/lwjgl-2.8.0/doc/README" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/lwjgl-2.8.0/doc/lwjgl_hidden_switches.text" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/lwjgl-2.8.0/jar/AppleJavaExtensions.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/lwjgl-2.8.0/jar/asm-debug-all.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/lwjgl-2.8.0/jar/jinput.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/lwjgl-2.8.0/jar/lwjgl-debug.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/lwjgl-2.8.0/jar/lwjgl.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/lwjgl-2.8.0/jar/lwjgl_test.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/lwjgl-2.8.0/jar/lwjgl_util.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/lwjgl-2.8.0/jar/lwjgl_util_applet.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/lwjgl-2.8.0/jar/lzma.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/lwjgl-2.8.0/native/linux/libjinput-linux.so" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/lwjgl-2.8.0/native/linux/libjinput-linux64.so" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/lwjgl-2.8.0/native/linux/liblwjgl.so" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/lwjgl-2.8.0/native/linux/liblwjgl64.so" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/lwjgl-2.8.0/native/linux/libopenal.so" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/lwjgl-2.8.0/native/linux/libopenal64.so" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/lwjgl-2.8.0/native/macosx/libjinput-osx.jnilib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/lwjgl-2.8.0/native/macosx/liblwjgl.jnilib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/lwjgl-2.8.0/native/macosx/openal.dylib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/lwjgl-2.8.0/native/solaris/liblwjgl.so" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/lwjgl-2.8.0/native/solaris/liblwjgl64.so" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/lwjgl-2.8.0/native/solaris/libopenal.so" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/lwjgl-2.8.0/native/solaris/libopenal64.so" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/lwjgl-2.8.0/native/windows/OpenAL32.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/lwjgl-2.8.0/native/windows/OpenAL64.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/lwjgl-2.8.0/native/windows/jinput-dx8.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/lwjgl-2.8.0/native/windows/jinput-dx8_64.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/lwjgl-2.8.0/native/windows/jinput-raw.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/lwjgl-2.8.0/native/windows/jinput-raw_64.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/lwjgl-2.8.0/native/windows/lwjgl.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/lwjgl-2.8.0/native/windows/lwjgl64.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/lwjgl-2.8.0/res/Footsteps.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/lwjgl-2.8.0/res/appletlogo.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/lwjgl-2.8.0/res/appletprogress.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/lwjgl-2.8.0/res/ball.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/lwjgl-2.8.0/res/ball_sm.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/lwjgl-2.8.0/res/center.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/lwjgl-2.8.0/res/ding.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/lwjgl-2.8.0/res/left.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/lwjgl-2.8.0/res/logo/lwjgl_logo-with_jacket.ai" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/lwjgl-2.8.0/res/logo/lwjgl_logo-with_jacket.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/lwjgl-2.8.0/res/lwjgl_16x16.xpm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/lwjgl-2.8.0/res/lwjgl_32x32.xpm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/lwjgl-2.8.0/res/resources.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/lwjgl-2.8.0/res/right.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/lwjgl-2.8.0/res/spaceinvaders/alien.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/lwjgl-2.8.0/res/spaceinvaders/alien2.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/lwjgl-2.8.0/res/spaceinvaders/alien3.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/lwjgl-2.8.0/res/spaceinvaders/gotyou.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/lwjgl-2.8.0/res/spaceinvaders/hit.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/lwjgl-2.8.0/res/spaceinvaders/loose.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/lwjgl-2.8.0/res/spaceinvaders/pressanykey.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/lwjgl-2.8.0/res/spaceinvaders/ship.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/lwjgl-2.8.0/res/spaceinvaders/shot.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/lwjgl-2.8.0/res/spaceinvaders/shot.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/lwjgl-2.8.0/res/spaceinvaders/start.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/lwjgl-2.8.0/res/spaceinvaders/win.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/lwjgl-2.8.0/res/spaceinvaders/youwin.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/slick/jogg-0.0.7.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/slick/jorbis-0.0.15.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/slick/slick-util.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/slick/slick2d-core-1.0.2.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/Green Platform/green_platform.mtl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/Green Platform/green_platform.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/dj.mtl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/dj.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/settings.gradle.kts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sounds/Jump.ogg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ds/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/PauseMenu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/PlatformsManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/PlatformsSpawner.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/ScoreManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/platforms/Platform.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/player/Player.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ds/engine/Constants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ds/engine/Game.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ds/engine/GameWorld.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ds/engine/IGameEvents.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ds/engine/Screen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ds/engine/camera/FreeCamera.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ds/engine/gameWorld/SkyboxConstants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ds/engine/ui/button/Button.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ds/engine/ui/button/GUIButton.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ds/engine/ui/button/GUIElement.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ds/engine/ui/text/GLFont.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ds/engine/ui/text/TexturePack.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ds/engine/utils/IOnAction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ds/engine/utils/Utils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/fonts/ARCADECLASSIC.TTF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/fonts/Roboto-Bold.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/textures/skybox/skybox_back.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/textures/skybox/skybox_down.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/textures/skybox/skybox_front.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/textures/skybox/skybox_left.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/textures/skybox/skybox_right.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/textures/skybox/skybox_up.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/textures/ui/ButtonBackground.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/textures/ui/ButtonBackground2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/textures/ui/PauseBackground.png" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="DSGame" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="2jCMw5yhqIpnrTTZ3EOgTc34Jcv" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Gradle.DSGame [:Main.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/toniw/IdeaProjects/DSGame/src/main/resources/fonts&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\toniw\IdeaProjects\DSGame\src\main\resources\fonts" />
+      <recent name="C:\Users\toniw\IdeaProjects\DSGame\libs" />
+      <recent name="C:\Users\toniw\IdeaProjects\DSGame\src\main\resources\textures\skybox" />
+      <recent name="C:\Users\toniw\IdeaProjects\DSGame\src\main\resources" />
+      <recent name="C:\Users\toniw\IdeaProjects\DSGame\fonts" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\toniw\IdeaProjects\DSGame" />
+      <recent name="C:\Users\toniw\IdeaProjects\DSGame\src\main\resources\sounds" />
+      <recent name="C:\Users\toniw\IdeaProjects\DSGame\src\main\resources\textures\skybox" />
+      <recent name="C:\Users\toniw\IdeaProjects\DSGame\src\main\resources\textures" />
+      <recent name="C:\Users\toniw\IdeaProjects\DSGame\src\main\resources" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.ds.Main" />
+      <module name="DSGame.main" />
+      <option name="VM_PARAMETERS" value="-Djava.library.path=libs/lwjgl-2.8.0/native/windows" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ds.dj3d.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="61cc59a3-8ae6-4453-adb0-e7c7693db885" name="Changes" comment="" />
+      <created>1720886842567</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1720886842567</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+</project>
