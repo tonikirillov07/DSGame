@@ -13,6 +13,8 @@ repositories {
 }
 
 dependencies {
+    implementation("org.slf4j:slf4j-api:1.7.30")
+    implementation("ch.qos.logback:logback-classic:1.4.14")
     implementation("org.jetbrains:annotations:24.0.0")
     implementation(files("libs/jpct/jpct.jar"))
     implementation(files(lwjglJarsPath + "AppleJavaExtensions.jar", lwjglJarsPath + "asm-debug-all.jar", lwjglJarsPath + "jinput.jar", lwjglJarsPath + "lwjgl.jar",

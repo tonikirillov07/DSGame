@@ -1,19 +1,20 @@
 package com.ds.engine.camera;
 
-import com.ds.dj3d.player.Player;
 import com.threed.jpct.Camera;
-import com.threed.jpct.SimpleVector;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class FreeCamera {
     private static final float FREE_CAMERA_SPEED = 50f;
+    private static final Logger log = LoggerFactory.getLogger(FreeCamera.class);
     private final Camera camera;
-    private final SimpleVector position;
 
-    public FreeCamera(SimpleVector position, Camera camera) {
-        this.position = position;
+    public FreeCamera(Camera camera) {
         this.camera = camera;
+
+        log.info("Created free camera");
     }
 
     public void move(float deltaTime){

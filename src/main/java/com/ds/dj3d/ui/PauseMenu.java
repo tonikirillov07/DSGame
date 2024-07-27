@@ -1,18 +1,20 @@
-package com.ds.dj3d;
+package com.ds.dj3d.ui;
 
 import com.ds.Main;
-import com.ds.engine.Constants;
+import com.ds.Constants;
 import com.ds.engine.Screen;
 import com.ds.engine.ui.button.Button;
 import com.ds.engine.ui.text.GLFont;
 import com.ds.engine.utils.Utils;
 import com.threed.jpct.FrameBuffer;
 import com.threed.jpct.Texture;
+import com.threed.jpct.util.KeyMapper;
+import com.threed.jpct.util.KeyState;
 import org.jetbrains.annotations.NotNull;
-import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
 
 public class PauseMenu {
     private boolean isOpen = false;
@@ -21,21 +23,25 @@ public class PauseMenu {
     private Texture backgroundTexture;
     private final GLFont titleFont, pausedFont;
     private final Button buttonResume, buttonExit;
+    private final KeyMapper keyMapper;
 
     public PauseMenu(@NotNull Screen screen) {
         this.frameBuffer = screen.getFrameBuffer();
         this.screen = screen;
 
-        titleFont = new GLFont(Utils.getGameFont(Font.BOLD,100f, Constants.ARCADE_CLASSIC_FONT_PATH), GLFont.ENGLISH);
-        pausedFont = new GLFont(Utils.getGameFont(Font.ITALIC, 40f, Constants.ROBOTO_BOLD_FONT_PATH), GLFont.ENGLISH);
+        keyMapper = new KeyMapper();
 
-        GLFont glFont = new GLFont(Utils.getGameFont(Font.BOLD,24f, Constants.ARCADE_CLASSIC_FONT_PATH));
+        titleFont = new GLFont(Utils.getFont(Font.BOLD,80f, Constants.ARCADE_CLASSIC_FONT_PATH), GLFont.ENGLISH);
+        pausedFont = new GLFont(Utils.getFont(Font.ITALIC, 40f, Constants.ROBOTO_BOLD_FONT_PATH), GLFont.ENGLISH);
 
-        buttonResume = new Button(frameBuffer.getWidth() / 2, frameBuffer.getHeight() / 2, 215, 49, glFont, "Resume", new Texture(Main.class.getResourceAsStream("/textures/ui/ButtonBackground.png")), frameBuffer,
+        GLFont glFont = new GLFont(Utils.getFont(Font.BOLD,24f, Constants.ARCADE_CLASSIC_FONT_PATH));
+
+        int buttonsX = frameBuffer.getWidth() - 400;
+        buttonResume = new Button(buttonsX, frameBuffer.getHeight() / 3, Button.DEFAULT_WIDTH, Button.DEFAULT_HEIGHT, glFont, "Resume", Constants.BUTTON_DEFAULT_BACKGROUND_TEXTURE, frameBuffer,
                 Color.WHITE, Color.RED);
         buttonResume.setOnAction(() -> isOpen = false);
 
-        buttonExit = new Button(frameBuffer.getWidth() / 9, (frameBuffer.getHeight() / 2) + 60, 215, 49, glFont, "Exit", new Texture(Main.class.getResourceAsStream("/textures/ui/ButtonBackground2.png")), frameBuffer,
+        buttonExit = new Button(buttonsX, (frameBuffer.getHeight() / 3) + 60, Button.DEFAULT_WIDTH, Button.DEFAULT_HEIGHT, glFont, "Exit", Constants.BUTTON_RED_BACKGROUND_TEXTURE, frameBuffer,
                 Color.WHITE, Color.RED);
         buttonExit.setOnAction(screen::dispose);
 
@@ -47,22 +53,26 @@ public class PauseMenu {
     }
 
     public void update(){
-        if(Keyboard.isKeyDown(Keyboard.KEY_R))
-            isOpen = !isOpen;
+        KeyState keyState;
+        while ((keyState = keyMapper.poll()) != KeyState.NONE){
+            if(keyState.getKeyCode() == KeyEvent.VK_ESCAPE & keyState.getState())
+                isOpen = !isOpen;
+        }
 
         changeMenuState();
         screen.setTimeScale(isOpen ? 0f: 1f);
     }
 
     private void changeMenuState() {
-        if(isOpen){
+        if(isOpen)
             drawMenu();
-        }
+
+        Mouse.setGrabbed(!isOpen);
     }
 
     private void drawMenu(){
         frameBuffer.blit(backgroundTexture, 0,0, 0, 0, backgroundTexture.getWidth(), backgroundTexture.getHeight(), frameBuffer.getWidth(), frameBuffer.getHeight(), 0, true);
-        titleFont.blitString(frameBuffer, "DOODLE JUMP 3D", frameBuffer.getWidth() / 9, frameBuffer.getHeight() / 3, 1, Color.WHITE);
+        titleFont.blitString(frameBuffer, Constants.TITLE.toUpperCase(), frameBuffer.getWidth() / 9, frameBuffer.getHeight() / 3, 1, Color.WHITE);
         pausedFont.blitString(frameBuffer, "Paused", 50, frameBuffer.getHeight() - 50, 1, new Color(176, 176, 176));
 
         Mouse.setGrabbed(false);

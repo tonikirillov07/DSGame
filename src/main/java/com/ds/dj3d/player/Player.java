@@ -1,36 +1,41 @@
 package com.ds.dj3d.player;
 
 import com.ds.engine.GameWorld;
-import com.threed.jpct.Camera;
-import com.threed.jpct.Object3D;
-import com.threed.jpct.SimpleVector;
+import com.ds.engine.particles.Particle;
+import com.ds.engine.utils.Utils;
+import com.threed.jpct.*;
 import org.lwjgl.input.Keyboard;
-import org.newdawn.slick.Sound;
+
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class Player {
     private final Object3D[] playerModel;
     private final GameWorld gameWorld;
     private final Camera camera;
     private Object3D player;
-    private boolean isOnGround = true, previousIsOnGround = true, isJumping = false;
+    private boolean isOnGround = false, previousIsOnGround = false, isJumping = false;
     private final SimpleVector ELLIPSOID = new SimpleVector(2, 2, 2);
     private float jumpDestinationY = 0;
-    private static final float JUMP_SPEED = 5f;
-    private static final float PLAYER_SPEED = 5f;
+    private static final float JUMP_SPEED = 10f;
+    private static final float PLAYER_SPEED = 10f;
+    private static final float DEFAULT_JUMP_HEIGHT = 20f;
+    private List<Particle> particleList;
 
     public Player(Object3D[] playerModel, GameWorld gameWorld, Camera camera) {
         this.playerModel = playerModel;
         this.gameWorld = gameWorld;
         this.camera = camera;
-
-        init();
     }
 
-    private void init(){
+    public void init(){
         player = Object3D.mergeAll(playerModel);
         player.rotateX((float) Math.toRadians(180));
         player.setCollisionMode(Object3D.COLLISION_CHECK_SELF);
         player.translate(new SimpleVector(0, -5f, 0));
+        player.setName("Player");
         player.build();
 
         camera.setPosition(new SimpleVector(getPosition().x, getPosition().y, getPosition().z - 20f));
@@ -38,11 +43,13 @@ public class Player {
         camera.lookAt(getPosition());
 
         gameWorld.addObject(player);
+
+        particleList = new ArrayList<>();
     }
 
-    private void jump() {
+    public void jump(float jumpHeight) {
         if(isOnGround & !isJumping){
-            jumpDestinationY = getPosition().y - 20;
+            jumpDestinationY = getPosition().y - jumpHeight;
             isJumping = true;
         }
     }
@@ -58,22 +65,37 @@ public class Player {
     }
 
     public void update(float deltaTime) {
-        //applyCamera();
+        applyCamera();
         move(deltaTime);
         applyGravity(deltaTime);
 
         if(Keyboard.isKeyDown(Keyboard.KEY_P))
             System.out.println(getPosition());
+
+        Iterator<Particle> particleIterator = particleList.iterator();
+        while (particleIterator.hasNext()){
+            Particle particle = particleIterator.next();
+
+            if(particle.isDestroyed())
+                particleIterator.remove();
+            else
+                particle.update(deltaTime);
+        }
     }
 
     private void applyCamera() {
         camera.align(player);
-        camera.lookAt(player.getTransformedCenter());
-        camera.setPosition(new SimpleVector(getPosition().x, getPosition().y, getPosition().z + 20));
+        camera.rotateZ((float) Math.toRadians(180));
+        camera.rotateY((float) Math.toRadians(30));
+        camera.rotateX((float) Math.toRadians(-20));
+        camera.setPosition(new SimpleVector(getPosition().x - 30, getPosition().y - 20, getPosition().z + 90));
     }
 
     private void applyGravity(float deltaTime) {
-        SimpleVector gravityVector = new SimpleVector(0, GameWorld.GRAVITY_FORCE * deltaTime, 0);
+        if(!gameWorld.containsObject(player))
+            return;
+
+        SimpleVector gravityVector = new SimpleVector(0, (JUMP_SPEED / 4) * GameWorld.GRAVITY_FORCE * deltaTime, 0);
         SimpleVector gravityVectorOriginal = gravityVector;
 
         if(isJumping) {
@@ -94,21 +116,37 @@ public class Player {
     }
 
     private void onIsOnGroundChanged(boolean isOnGround){
-        try {
-            previousIsOnGround = isOnGround;
+        previousIsOnGround = isOnGround;
 
-            if(isOnGround) {
-                jump();
+        if(isOnGround) {
+            createParticles();
 
-                Sound sound = new Sound("/sounds/Jump.ogg");
-                sound.play();
-            }
-        }catch (Exception e){
-            e.printStackTrace();
+            jump(DEFAULT_JUMP_HEIGHT);
+            Utils.playSound("/sounds/Jump.ogg");
+        }
+    }
+
+    private void createParticles() {
+        for (int i = 0; i < 10; i++) {
+            Particle particle = new Particle(0.3f, 0.2f, 0.3f, Color.RED, gameWorld);
+
+            particle.setOrigin(new SimpleVector(player.getTranslation().x, player.getTranslation().y +  player.getScale(), player.getTranslation().z));
+            particle.setVelocity(new SimpleVector(1 - Math.random() * 1,  1 - (Math.random() / 2f), 1 - Math.random() * 1));
+
+            particleList.add(particle);
+            gameWorld.addObject(particle);
         }
     }
 
     public SimpleVector getPosition() {
         return player.getTranslation();
+    }
+
+    public void setPosition(SimpleVector simpleVector){
+        player.translate(simpleVector);
+    }
+
+    public Object3D getPlayer() {
+        return player;
     }
 }

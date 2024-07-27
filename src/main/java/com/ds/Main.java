@@ -1,6 +1,6 @@
 package com.ds;
 
-import com.ds.engine.Game;
+import com.ds.dj3d.Game;
 
 public class Main {
     public static void main(String[] args) {
