@@ -1,6 +1,7 @@
 package com.ds.dj3d.platforms.platformsManaging;
 
 import com.ds.Constants;
+import com.ds.dj3d.LoseManager;
 import com.ds.dj3d.ScoreManager;
 import com.ds.dj3d.platforms.Platform;
 import com.ds.dj3d.platforms.Spring;
@@ -12,7 +13,6 @@ import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
-import java.util.Iterator;
 import java.util.List;
 
 public class PlatformsManager {
@@ -21,14 +21,14 @@ public class PlatformsManager {
     private List<Spring> springList;
     private PlatformsSpawner platformsSpawner;
 
-    public void init(Player player, GameWorld gameWorld, ShadowsManager shadowsManager, ScoreManager scoreManager){
+    public void init(Player player, GameWorld gameWorld, ShadowsManager shadowsManager, ScoreManager scoreManager, LoseManager loseManager){
         log.info("Initializing platforms manager...");
 
         platformList = new ArrayList<>();
         springList = new ArrayList<>();
 
-        platformsSpawner = new PlatformsSpawner(player, gameWorld, this, shadowsManager, scoreManager, springList);
-        platformsSpawner.create(10, platformList, Constants.GAME_SPACE_START_X, Constants.GAME_SPACE_END_X, true);
+        platformsSpawner = new PlatformsSpawner(player, gameWorld, this, shadowsManager, scoreManager, springList, platformList,null);
+        platformsSpawner.create(10, true);
     }
 
     public void update(float deltaTime){

@@ -45,4 +45,12 @@ public class ScoreManager {
         if(score > bestScore)
             SettingsWriter.writeValue(SettingsConstants.BEST_SCORE_KEY, String.valueOf(score));
     }
+
+    public void resetScore(){
+        score = 0;
+    }
+
+    public int getScore() {
+        return score;
+    }
 }

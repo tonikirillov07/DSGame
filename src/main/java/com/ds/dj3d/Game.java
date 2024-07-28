@@ -9,7 +9,6 @@ import com.ds.engine.utils.ErrorHandler;
 import com.ds.engine.GameWorld;
 import com.ds.engine.IGameEvents;
 import com.ds.engine.Screen;
-import com.ds.engine.camera.FreeCamera;
 import com.ds.engine.shadows.ShadowsManager;
 import com.ds.engine.ui.text.GLFont;
 import com.ds.engine.utils.Utils;
@@ -30,6 +29,7 @@ public class Game implements IGameEvents {
     private ScoreManager scoreManager;
     private ShadowsManager shadowsManager;
     private MainMenu mainMenu;
+    private LoseManager loseManager;
     private boolean isGameStarted;
 
     public void start(){
@@ -68,7 +68,9 @@ public class Game implements IGameEvents {
 
         player.init();
         shadowsManager.init();
-        platformsManager.init(player, gameWorld, shadowsManager, scoreManager);
+        platformsManager.init(player, gameWorld, shadowsManager, scoreManager, loseManager);
+
+        loseManager = new LoseManager(player, platformsManager.getPlatformList(), platformsManager.getPlatformsSpawner());
 
         shadowsManager.getShadowHelper().addCaster(player.getPlayer());
 
@@ -80,6 +82,7 @@ public class Game implements IGameEvents {
         player.update(deltaTime);
         platformsManager.update(deltaTime);
         scoreManager.update();
+        loseManager.update();
 
         if(screen.getTimeScale() != 0f)
             fpsText.blitString(screen.getFrameBuffer(), "FPS: " + Math.round(1 / deltaTime) + ", " + Utils.roundNumber(deltaTime * 1000) + " ms", 30, 50, 1, Color.RED);

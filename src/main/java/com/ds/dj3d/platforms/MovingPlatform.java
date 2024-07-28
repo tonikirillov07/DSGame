@@ -1,6 +1,7 @@
 package com.ds.dj3d.platforms;
 
 import com.ds.dj3d.ScoreManager;
+import com.ds.dj3d.platforms.platformsManaging.PlatformsManager;
 import com.ds.dj3d.player.Player;
 import com.ds.engine.GameWorld;
 import com.threed.jpct.Object3D;
@@ -15,8 +16,8 @@ public class MovingPlatform extends Platform{
 
     private static final byte MOVE_LEFT = 1;
 
-    public MovingPlatform(@NotNull Object3D model, Player player, GameWorld gameWorld, ScoreManager scoreManager, float moveXStart, float moveXFinal, Color color) {
-        super(model, player, gameWorld, scoreManager, color);
+    public MovingPlatform(@NotNull Object3D model, Player player, GameWorld gameWorld, ScoreManager scoreManager, PlatformsManager platformsManager, float moveXStart, float moveXFinal, Color color) {
+        super(model, player, gameWorld, platformsManager, scoreManager, color);
 
         this.moveXStart = moveXStart;
         this.moveXFinal = moveXFinal;

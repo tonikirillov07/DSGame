@@ -32,7 +32,7 @@ public class PauseMenu {
         keyMapper = new KeyMapper();
 
         titleFont = new GLFont(Utils.getFont(Font.BOLD,55f, Constants.ARCADE_CLASSIC_FONT_PATH), GLFont.ENGLISH);
-        pausedFont = new GLFont(Utils.getFont(Font.ITALIC, 15f, Constants.ROBOTO_BOLD_FONT_PATH), GLFont.ENGLISH);
+        pausedFont = new GLFont(Utils.getFont(Font.ITALIC, 25f, Constants.ROBOTO_BOLD_FONT_PATH), GLFont.ENGLISH);
 
         GLFont glFont = new GLFont(Utils.getFont(Font.BOLD,24f, Constants.JOYSTIX_MONOSPACE_FONT_PATH));
 

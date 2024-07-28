@@ -5,11 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="61cc59a3-8ae6-4453-adb0-e7c7693db885" name="Changes" comment="7/26/2024">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/SettingsManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fonts/joystix-monospace.otf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gameIcon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sounds/click.ogg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/LoseManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/settings/user_settings.properties" beforeDir="false" afterPath="$PROJECT_DIR$/settings/user_settings.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sounds/Jump.ogg" beforeDir="false" afterPath="$PROJECT_DIR$/sounds/jump.ogg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sounds/Spring.ogg" beforeDir="false" afterPath="$PROJECT_DIR$/sounds/spring.ogg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/ScoreManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/ScoreManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/platforms/MovingPlatform.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/platforms/MovingPlatform.java" afterDir="false" />
@@ -18,16 +20,10 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/platforms/platformsManaging/PlatformsManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/platforms/platformsManaging/PlatformsManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/platforms/platformsManaging/PlatformsSpawner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/platforms/platformsManaging/PlatformsSpawner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/player/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/settings/SettingsConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/settings/SettingsConstants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/settings/SettingsReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/settings/SettingsReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/ui/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/ui/MainMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/ui/PauseMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/ui/PauseMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/ui/SettingsMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/ui/SettingsMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/engine/Screen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/engine/Screen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/engine/particles/Particle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/engine/particles/Particle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/engine/ui/button/Button.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/engine/ui/button/Button.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/engine/ui/button/SwitchButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/engine/ui/button/SwitchButton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/engine/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/engine/utils/Utils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,11 +115,11 @@
       <recent name="C:\Users\toniw\IdeaProjects\DSGame\src\main\resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\toniw\IdeaProjects\DSGame\src\main\resources\fonts" />
+      <recent name="C:\Users\toniw\IdeaProjects\DSGame\sounds" />
       <recent name="C:\Users\toniw\IdeaProjects\DSGame" />
+      <recent name="C:\Users\toniw\IdeaProjects\DSGame\src\main\resources\fonts" />
       <recent name="C:\Users\toniw\IdeaProjects\DSGame\src\main\resources\sounds" />
       <recent name="C:\Users\toniw\IdeaProjects\DSGame\src\main\resources\textures\skybox" />
-      <recent name="C:\Users\toniw\IdeaProjects\DSGame\src\main\resources\textures" />
     </key>
   </component>
   <component name="RunManager" selected="Application.Main">
@@ -199,7 +195,15 @@
       <option name="project" value="LOCAL" />
       <updated>1722097258299</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="7/26/2024">
+      <option name="closed" value="true" />
+      <created>1722156549422</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1722156549422</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">

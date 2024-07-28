@@ -96,7 +96,7 @@ public class Player {
         if(!gameWorld.containsObject(player))
             return;
 
-        SimpleVector gravityVector = new SimpleVector(0, (JUMP_SPEED / 4) * GameWorld.GRAVITY_FORCE * deltaTime, 0);
+        SimpleVector gravityVector = new SimpleVector(0, (JUMP_SPEED / 3.5f) * GameWorld.GRAVITY_FORCE * deltaTime, 0);
         SimpleVector gravityVectorOriginal = gravityVector;
 
         if(isJumping) {
@@ -123,7 +123,7 @@ public class Player {
             createParticles();
 
             jump(DEFAULT_JUMP_HEIGHT);
-            Utils.playSound("/sounds/Jump.ogg");
+            Utils.playSound("/sounds/jump.ogg");
         }
     }
 
@@ -132,7 +132,7 @@ public class Player {
             Particle particle = new Particle(0.3f, 0.2f, 0.3f, particlesColor, gameWorld);
 
             particle.setOrigin(new SimpleVector(player.getTranslation().x, player.getTranslation().y +  player.getScale(), player.getTranslation().z));
-            particle.setVelocity(new SimpleVector(1 - Math.random() * 1,  1 - (Math.random() / 2f), 1 - Math.random() * 1));
+            particle.setVelocity(new SimpleVector(Math.random(),  1 - (Math.random() / 2f), Math.random()));
 
             particleList.add(particle);
             gameWorld.addObject(particle);
@@ -144,6 +144,9 @@ public class Player {
     }
 
     public void setPosition(SimpleVector simpleVector){
+        isJumping = false;
+
+        player.clearTranslation();
         player.translate(simpleVector);
     }
 

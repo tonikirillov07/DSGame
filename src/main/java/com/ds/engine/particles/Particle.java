@@ -9,7 +9,7 @@ import com.threed.jpct.SimpleVector;
 import java.awt.*;
 
 public class Particle extends Object3D {
-    private final SimpleVector velocity;
+    private SimpleVector velocity;
     private float time;
     private final float aliveTime, speed;
     private final Color color;
@@ -59,6 +59,8 @@ public class Particle extends Object3D {
             isDestroyed = true;
         }else{
             velocity.add(new SimpleVector(0f, -speed * deltaTime, 0f));
+            velocity = checkForCollisionEllipsoid(velocity, new SimpleVector(1f, 1f, 1f), 1);
+
             translate(velocity);
         }
     }

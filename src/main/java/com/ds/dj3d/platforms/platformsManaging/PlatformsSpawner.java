@@ -1,5 +1,7 @@
 package com.ds.dj3d.platforms.platformsManaging;
 
+import com.ds.Constants;
+import com.ds.dj3d.LoseManager;
 import com.ds.dj3d.ScoreManager;
 import com.ds.dj3d.platforms.MovingPlatform;
 import com.ds.dj3d.platforms.Platform;
@@ -10,7 +12,6 @@ import com.ds.engine.shadows.ShadowsManager;
 import com.ds.engine.utils.Utils;
 import com.threed.jpct.Loader;
 import com.threed.jpct.Object3D;
-import com.threed.jpct.Primitives;
 import com.threed.jpct.SimpleVector;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
@@ -30,23 +31,27 @@ public class PlatformsSpawner {
     private final ShadowsManager shadowsManager;
     private final ScoreManager scoreManager;
     private final List<Spring> springList;
+    private final List<Platform> platformList;
+    private LoseManager loseManager;
 
-    public PlatformsSpawner(Player player, GameWorld gameWorld, PlatformsManager platformsManager, ShadowsManager shadowsManager, ScoreManager scoreManager, List<Spring> springList) {
+    public PlatformsSpawner(Player player, GameWorld gameWorld, PlatformsManager platformsManager, ShadowsManager shadowsManager, ScoreManager scoreManager, List<Spring> springList, List<Platform> platformList, LoseManager loseManager) {
         this.player = player;
         this.gameWorld = gameWorld;
         this.platformsManager = platformsManager;
         this.shadowsManager = shadowsManager;
         this.scoreManager = scoreManager;
         this.springList = springList;
+        this.platformList = platformList;
+        this.loseManager = loseManager;
 
         greenPlatformModel = Object3D.mergeAll((Loader.loadOBJ("models/Green Platform/green_platform.obj", "models/Green Platform/green_platform.mtl", 1f)));
         bluePlatformModel = Object3D.mergeAll((Loader.loadOBJ("models/Blue Platform/blue_platform.obj", "models/Blue Platform/blue_platform.mtl", 1f)));
         springModel = Object3D.mergeAll((Loader.loadOBJ("models/Spring/spring.obj", "models/Spring/spring.mtl", 0.8f)));
     }
 
-    public void create(int count, List<Platform> platformList, float startX, float endX, boolean spawnPlayer){
+    public void create(int count, boolean spawnPlayer){
         Random random = new Random();
-        log.info("Creating {} platforms with XS ({}, {}). Spawn player at first flag: {}", count, startX, endX, spawnPlayer);
+        log.info("Creating {} platforms. Spawn player at first flag: {}", count, spawnPlayer);
 
         for (int i = 0; i < count; i++) {
             Object3D currentPlatform = getCurrentPlatform(i == 0);
@@ -57,9 +62,9 @@ public class PlatformsSpawner {
             if(Utils.getChance(0.3f))
                 addSpring(object3D);
 
-            Platform platform = definePlatform(currentPlatform, object3D, startX, endX);
+            Platform platform = definePlatform(currentPlatform, object3D);
 
-            float randomX = random.nextFloat(startX, endX);
+            float randomX = random.nextFloat(Constants.GAME_SPACE_START_X, Constants.GAME_SPACE_END_X);
             float randomY = previousY - random.nextFloat(5f, 17f);
             previousY = randomY;
 
@@ -73,12 +78,33 @@ public class PlatformsSpawner {
                 player.setPosition(new SimpleVector(randomX, randomY - (2 * object3D.getScale()), 0));
 
             if(i == (count / 2))
-                platform.setCreateMorePlatformWhenPlayerIsNear(true, platformsManager);
+                platform.setCreateMorePlatformWhenPlayerIsNear(true);
 
             platformList.add(platform);
         }
 
         log.info("Created platforms");
+    }
+
+    public void recreate(int count){
+        deleteAll();
+        scoreManager.resetScore();
+        create(count, true);
+    }
+
+    private void deleteAll() {
+        platformList.forEach(platform -> {
+            if(gameWorld.containsObject(platform.getModel()))
+                gameWorld.removeObject(platform.getModel());
+        });
+
+        springList.forEach(spring -> {
+            if(gameWorld.containsObject(spring.getSpringObject()))
+                gameWorld.removeObject(spring.getSpringObject());
+        });
+
+        platformList.clear();
+        springList.clear();
     }
 
     private void addSpring(@NotNull Object3D platformObject){
@@ -95,16 +121,16 @@ public class PlatformsSpawner {
         platformObject.addChild(springObject);
     }
 
-    private Platform definePlatform(@NotNull Object3D currentPlatform, Object3D platformObject, float startX, float endX){
-        Platform platform = new Platform(platformObject, player, gameWorld, scoreManager, Color.GREEN);
+    private Platform definePlatform(@NotNull Object3D currentPlatform, Object3D platformObject){
+        Platform platform = new Platform(platformObject, player, gameWorld, platformsManager, scoreManager, Color.GREEN);
         if(currentPlatform.getUserObject() == PlatformType.MOVING)
-            platform = new MovingPlatform(platformObject, player, gameWorld, scoreManager, startX, endX, Color.BLUE);
+            platform = new MovingPlatform(platformObject, player, gameWorld, scoreManager, platformsManager, Constants.GAME_SPACE_START_X, Constants.GAME_SPACE_END_X, Color.BLUE);
 
         return platform;
     }
 
     private @NotNull Object3D getCurrentPlatform(boolean isFirst){
-        if(Utils.getChance(0.20f) & !isFirst)
+        if(Utils.getChance(0.20f * ((float) scoreManager.getScore() / 100)) & !isFirst)
             return getPlatformWithType(bluePlatformModel, PlatformType.MOVING);
        else
            return getPlatformWithType(greenPlatformModel, PlatformType.DEFAULT);

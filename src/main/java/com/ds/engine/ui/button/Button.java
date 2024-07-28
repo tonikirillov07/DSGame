@@ -2,6 +2,7 @@ package com.ds.engine.ui.button;
 
 import com.ds.engine.ui.text.GLFont;
 import com.ds.engine.utils.IOnAction;
+import com.ds.engine.utils.Utils;
 import com.threed.jpct.FrameBuffer;
 import com.threed.jpct.Texture;
 import org.lwjgl.input.Mouse;
@@ -87,6 +88,8 @@ public class Button {
     }
 
     public void onClick(){
+        Utils.playSound("/sounds/click.ogg");
+
         if(onAction != null)
             onAction.onAction();
     }

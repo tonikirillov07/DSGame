@@ -12,7 +12,6 @@ public class Spring {
     private final Player player;
     private final GameWorld gameWorld;
     public static final String SPRING_NAME = "Spring";
-    private boolean isDestroyed;
 
     public Spring(Object3D springObject, Player player, GameWorld gameWorld) {
         this.springObject = springObject;
@@ -41,7 +40,6 @@ public class Spring {
         if(isPlayerAboveSpring & getDistanceAmongSpringAndPlayer() >= Constants.PLATFORM_DELETE_DISTANCE){
             if(gameWorld.containsObject(springObject))
                 gameWorld.removeObject(springObject);
-            isDestroyed = true;
         }
     }
 
@@ -49,7 +47,7 @@ public class Spring {
         return springObject.getTranslation().distance(player.getPosition());
     }
 
-    public boolean isDestroyed() {
-        return isDestroyed;
+    public Object3D getSpringObject() {
+        return springObject;
     }
 }

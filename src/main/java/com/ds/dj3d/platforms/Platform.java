@@ -17,15 +17,16 @@ public class Platform {
     private final Player player;
     private final GameWorld gameWorld;
     private boolean isCreateMorePlatformWhenPlayerIsNear;
-    private PlatformsManager platformsManager;
+    private final PlatformsManager platformsManager;
     private boolean canGiveScore = true;
     private final ScoreManager scoreManager;
     private final Color particlesColor;
 
-    public Platform(@NotNull Object3D model, Player player, GameWorld gameWorld, ScoreManager scoreManager, Color particlesColor) {
+    public Platform(@NotNull Object3D model, Player player, GameWorld gameWorld, PlatformsManager platformsManager, ScoreManager scoreManager, Color particlesColor) {
         this.model = model;
         this.player = player;
         this.gameWorld = gameWorld;
+        this.platformsManager = platformsManager;
         this.scoreManager = scoreManager;
         this.particlesColor = particlesColor;
 
@@ -66,7 +67,7 @@ public class Platform {
                 if(platformsManager == null)
                     return;
 
-                platformsManager.getPlatformsSpawner().create(10, platformsManager.getPlatformList(), Constants.GAME_SPACE_START_X, Constants.GAME_SPACE_END_X, false);
+                platformsManager.getPlatformsSpawner().create(10,false);
                 isCreateMorePlatformWhenPlayerIsNear = false;
             }
         }
@@ -74,8 +75,10 @@ public class Platform {
 
     private void removeWhenPlayerIsFarEnough() {
         if(getDistanceAmongPlayerAndPlatform() >= Constants.PLATFORM_DELETE_DISTANCE & (model.getTranslation().y > player.getPosition().y)){
-            if(gameWorld.containsObject(model))
+            if(gameWorld.containsObject(model)){
                 gameWorld.removeObject(model);
+                platformsManager.getPlatformList().remove(this);
+            }
         }
     }
 
@@ -83,8 +86,7 @@ public class Platform {
         return player.getPosition().distance(model.getTranslation());
     }
 
-    public void setCreateMorePlatformWhenPlayerIsNear(boolean createMorePlatformWhenPlayerIsNear, PlatformsManager platformsManager) {
-        this.platformsManager = platformsManager;
+    public void setCreateMorePlatformWhenPlayerIsNear(boolean createMorePlatformWhenPlayerIsNear) {
         isCreateMorePlatformWhenPlayerIsNear = createMorePlatformWhenPlayerIsNear;
     }
 
