@@ -23,6 +23,7 @@ public class Player {
     private static final float PLAYER_SPEED = 10f;
     private static final float DEFAULT_JUMP_HEIGHT = 20f;
     private List<Particle> particleList;
+    private Color particlesColor;
 
     public Player(Object3D[] playerModel, GameWorld gameWorld, Camera camera) {
         this.playerModel = playerModel;
@@ -128,7 +129,7 @@ public class Player {
 
     private void createParticles() {
         for (int i = 0; i < 10; i++) {
-            Particle particle = new Particle(0.3f, 0.2f, 0.3f, Color.RED, gameWorld);
+            Particle particle = new Particle(0.3f, 0.2f, 0.3f, particlesColor, gameWorld);
 
             particle.setOrigin(new SimpleVector(player.getTranslation().x, player.getTranslation().y +  player.getScale(), player.getTranslation().z));
             particle.setVelocity(new SimpleVector(1 - Math.random() * 1,  1 - (Math.random() / 2f), 1 - Math.random() * 1));
@@ -148,5 +149,9 @@ public class Player {
 
     public Object3D getPlayer() {
         return player;
+    }
+
+    public void setParticlesColor(Color particlesColor) {
+        this.particlesColor = particlesColor;
     }
 }

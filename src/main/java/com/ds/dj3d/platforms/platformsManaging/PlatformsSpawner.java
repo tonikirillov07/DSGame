@@ -16,6 +16,7 @@ import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.awt.*;
 import java.util.List;
 import java.util.Random;
 
@@ -86,7 +87,7 @@ public class PlatformsSpawner {
         springObject.translate(new SimpleVector(platformObject.getTranslation().x + springObject.getScale(), platformObject.getTranslation().y - (springObject.getScale() / 2), platformObject.getTranslation().z));
         springObject.build();
 
-        Spring spring = new Spring(springObject, player);
+        Spring spring = new Spring(springObject, player, gameWorld);
         spring.init();
         springList.add(spring);
 
@@ -95,9 +96,9 @@ public class PlatformsSpawner {
     }
 
     private Platform definePlatform(@NotNull Object3D currentPlatform, Object3D platformObject, float startX, float endX){
-        Platform platform = new Platform(platformObject, player, gameWorld, scoreManager);
+        Platform platform = new Platform(platformObject, player, gameWorld, scoreManager, Color.GREEN);
         if(currentPlatform.getUserObject() == PlatformType.MOVING)
-            platform = new MovingPlatform(platformObject, player, gameWorld, scoreManager, startX, endX);
+            platform = new MovingPlatform(platformObject, player, gameWorld, scoreManager, startX, endX, Color.BLUE);
 
         return platform;
     }

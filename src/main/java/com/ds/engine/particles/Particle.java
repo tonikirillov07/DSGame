@@ -7,8 +7,6 @@ import com.threed.jpct.Primitives;
 import com.threed.jpct.SimpleVector;
 
 import java.awt.*;
-import java.util.Iterator;
-import java.util.List;
 
 public class Particle extends Object3D {
     private final SimpleVector velocity;
@@ -33,9 +31,7 @@ public class Particle extends Object3D {
 
     private void init() {
         setBillboarding(true);
-        setVisibility(OBJ_VISIBLE);
         setTransparency(12);
-        setLighting(LIGHTING_NO_LIGHTS);
         enableLazyTransformations();
         setAdditionalColor(color);
         setTranslationMatrix(new Matrix());

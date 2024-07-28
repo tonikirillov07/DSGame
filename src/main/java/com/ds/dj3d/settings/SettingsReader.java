@@ -1,5 +1,6 @@
 package com.ds.dj3d.settings;
 
+import com.ds.engine.utils.ErrorHandler;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.FileReader;
@@ -8,7 +9,7 @@ import java.util.Properties;
 public final class SettingsReader {
     private static Properties properties;
 
-    static {
+    private static void loadProperties(){
         try {
             properties = new Properties();
             FileReader fileReader = new FileReader(SettingsConstants.SETTINGS_PATH);
@@ -16,11 +17,13 @@ public final class SettingsReader {
             properties.load(fileReader);
             fileReader.close();
         }catch (Exception e){
-            e.printStackTrace();
+            ErrorHandler.doError(e);
         }
     }
 
     public static @Nullable String getValue(String key){
+        loadProperties();
+
         return properties.getProperty(key);
     }
 }

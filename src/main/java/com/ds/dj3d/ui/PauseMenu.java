@@ -31,10 +31,10 @@ public class PauseMenu {
 
         keyMapper = new KeyMapper();
 
-        titleFont = new GLFont(Utils.getFont(Font.BOLD,80f, Constants.ARCADE_CLASSIC_FONT_PATH), GLFont.ENGLISH);
-        pausedFont = new GLFont(Utils.getFont(Font.ITALIC, 40f, Constants.ROBOTO_BOLD_FONT_PATH), GLFont.ENGLISH);
+        titleFont = new GLFont(Utils.getFont(Font.BOLD,55f, Constants.ARCADE_CLASSIC_FONT_PATH), GLFont.ENGLISH);
+        pausedFont = new GLFont(Utils.getFont(Font.ITALIC, 15f, Constants.ROBOTO_BOLD_FONT_PATH), GLFont.ENGLISH);
 
-        GLFont glFont = new GLFont(Utils.getFont(Font.BOLD,24f, Constants.ARCADE_CLASSIC_FONT_PATH));
+        GLFont glFont = new GLFont(Utils.getFont(Font.BOLD,24f, Constants.JOYSTIX_MONOSPACE_FONT_PATH));
 
         int buttonsX = frameBuffer.getWidth() - 400;
         buttonResume = new Button(buttonsX, frameBuffer.getHeight() / 3, Button.DEFAULT_WIDTH, Button.DEFAULT_HEIGHT, glFont, "Resume", Constants.BUTTON_DEFAULT_BACKGROUND_TEXTURE, frameBuffer,
@@ -72,7 +72,7 @@ public class PauseMenu {
 
     private void drawMenu(){
         frameBuffer.blit(backgroundTexture, 0,0, 0, 0, backgroundTexture.getWidth(), backgroundTexture.getHeight(), frameBuffer.getWidth(), frameBuffer.getHeight(), 0, true);
-        titleFont.blitString(frameBuffer, Constants.TITLE.toUpperCase(), frameBuffer.getWidth() / 9, frameBuffer.getHeight() / 3, 1, Color.WHITE);
+        titleFont.blitString(frameBuffer, Constants.TITLE.toUpperCase(), frameBuffer.getWidth() / 9, frameBuffer.getHeight() / 4, 1, Color.WHITE);
         pausedFont.blitString(frameBuffer, "Paused", 50, frameBuffer.getHeight() - 50, 1, new Color(176, 176, 176));
 
         Mouse.setGrabbed(false);

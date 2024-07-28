@@ -5,6 +5,8 @@ import com.ds.dj3d.platforms.platformsManaging.PlatformsManager;
 import com.ds.dj3d.player.Player;
 import com.ds.Constants;
 import com.ds.engine.GameWorld;
+import com.threed.jpct.CollisionEvent;
+import com.threed.jpct.CollisionListener;
 import com.threed.jpct.Object3D;
 import org.jetbrains.annotations.NotNull;
 
@@ -18,12 +20,26 @@ public class Platform {
     private PlatformsManager platformsManager;
     private boolean canGiveScore = true;
     private final ScoreManager scoreManager;
+    private final Color particlesColor;
 
-    public Platform(@NotNull Object3D model, Player player, GameWorld gameWorld, ScoreManager scoreManager) {
+    public Platform(@NotNull Object3D model, Player player, GameWorld gameWorld, ScoreManager scoreManager, Color particlesColor) {
         this.model = model;
         this.player = player;
         this.gameWorld = gameWorld;
         this.scoreManager = scoreManager;
+        this.particlesColor = particlesColor;
+
+        model.addCollisionListener(new CollisionListener() {
+            @Override
+            public void collision(CollisionEvent collisionEvent) {
+                player.setParticlesColor(particlesColor);
+            }
+
+            @Override
+            public boolean requiresPolygonIDs() {
+                return false;
+            }
+        });
     }
 
     public void update(float deltaTime) {

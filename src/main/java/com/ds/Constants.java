@@ -12,6 +12,7 @@ public final class Constants {
     public static final String TITLE = "Doodle Jump 3D";
     public static final String DEVELOPER = "Darkness";
     public static final String ARCADE_CLASSIC_FONT_PATH = "/fonts/ARCADECLASSIC.TTF";
+    public static final String JOYSTIX_MONOSPACE_FONT_PATH = "/fonts/joystix-monospace.otf";
     public static final String ROBOTO_BOLD_FONT_PATH = "/fonts/Roboto-Bold.ttf";
     public static final float GAME_SPACE_START_X = -20f;
     public static final float GAME_SPACE_END_X = 40f;

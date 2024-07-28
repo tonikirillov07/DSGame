@@ -21,7 +21,7 @@ public class ScoreManager {
     public ScoreManager(FrameBuffer frameBuffer) {
         this.frameBuffer = frameBuffer;
 
-        currentPlayerScoreFont = new GLFont(Utils.getFont(Font.BOLD, 35f, Constants.ARCADE_CLASSIC_FONT_PATH));
+        currentPlayerScoreFont = new GLFont(Utils.getFont(Font.BOLD, 26f, Constants.JOYSTIX_MONOSPACE_FONT_PATH));
         playerBestScoreFont = currentPlayerScoreFont;
 
         bestScore = Integer.parseInt(Objects.requireNonNull(SettingsReader.getValue(SettingsConstants.BEST_SCORE_KEY)));

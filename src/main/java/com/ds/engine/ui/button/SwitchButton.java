@@ -45,4 +45,8 @@ public class SwitchButton extends Button{
     public String getCurrentValue() {
         return currentValue;
     }
+
+    public int getCurrentValueIndex() {
+        return currentValueIndex;
+    }
 }

@@ -2,20 +2,14 @@ package com.ds.dj3d.ui;
 
 import com.ds.Constants;
 import com.ds.dj3d.Game;
-import com.ds.engine.particles.Particle;
 import com.ds.engine.ui.button.Button;
 import com.ds.engine.ui.text.GLFont;
 import com.ds.engine.utils.Utils;
-import com.threed.jpct.Camera;
 import com.threed.jpct.FrameBuffer;
-import com.threed.jpct.Matrix;
-import com.threed.jpct.SimpleVector;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainMenu {
     private static final Logger log = LoggerFactory.getLogger(MainMenu.class);
@@ -27,7 +21,7 @@ public class MainMenu {
     private boolean isOpen;
     private SettingsMenu settingsMenu;
 
-    public MainMenu(FrameBuffer frameBuffer, Game game, Camera camera) {
+    public MainMenu(FrameBuffer frameBuffer, Game game) {
         this.frameBuffer = frameBuffer;
         this.game = game;
 
@@ -40,7 +34,7 @@ public class MainMenu {
 
         titleFont = new GLFont(Utils.getFont(Font.BOLD, 100f, Constants.ARCADE_CLASSIC_FONT_PATH));
         developerFont = new GLFont(Utils.getFont(Font.BOLD, 30f, Constants.ROBOTO_BOLD_FONT_PATH));
-        settingsMenu = new SettingsMenu(frameBuffer);
+        settingsMenu = new SettingsMenu(frameBuffer, game.getGameWorld(), game.getScreen());
 
         createButtons();
     }

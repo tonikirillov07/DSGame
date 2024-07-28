@@ -7,15 +7,16 @@ import com.threed.jpct.Object3D;
 import com.threed.jpct.SimpleVector;
 import org.jetbrains.annotations.NotNull;
 
+import java.awt.*;
+
 public class MovingPlatform extends Platform{
     private final float moveXStart, moveXFinal;
     private byte moveDirection = 1;
-    private float speed = 6f;
 
     private static final byte MOVE_LEFT = 1;
 
-    public MovingPlatform(@NotNull Object3D model, Player player, GameWorld gameWorld, ScoreManager scoreManager, float moveXStart, float moveXFinal) {
-        super(model, player, gameWorld, scoreManager);
+    public MovingPlatform(@NotNull Object3D model, Player player, GameWorld gameWorld, ScoreManager scoreManager, float moveXStart, float moveXFinal, Color color) {
+        super(model, player, gameWorld, scoreManager, color);
 
         this.moveXStart = moveXStart;
         this.moveXFinal = moveXFinal;
@@ -38,6 +39,7 @@ public class MovingPlatform extends Platform{
     private void moveInDirection(SimpleVector startPointVector, SimpleVector endPointVector, float deltaTime){
         SimpleVector destinationPoint = moveDirection == MOVE_LEFT ? startPointVector : endPointVector;
 
+        float speed = 6f;
         if (getModel().getTranslation().distance(destinationPoint) > 1f)
             getModel().translate((moveDirection == MOVE_LEFT ? -1 : 1) * speed * deltaTime, 0, 0);
         else

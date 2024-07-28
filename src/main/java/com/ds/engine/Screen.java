@@ -1,6 +1,8 @@
 package com.ds.engine;
 
 import com.ds.Constants;
+import com.ds.dj3d.settings.SettingsConstants;
+import com.ds.dj3d.settings.SettingsReader;
 import com.ds.engine.utils.ErrorHandler;
 import com.threed.jpct.Config;
 import com.threed.jpct.FrameBuffer;
@@ -19,6 +21,7 @@ public class Screen {
     private FrameBuffer frameBuffer;
     private float deltaTime, timeScale = 1f;
     private final IGameEvents gameEvents;
+    private boolean isLimitFps;
 
     public Screen(IGameEvents gameEvents) {
         this.gameEvents = gameEvents;
@@ -28,10 +31,11 @@ public class Screen {
         log.info("Starting frame buffer...");
 
         Config.glWindowName = Constants.TITLE;
+        isLimitFps = Boolean.parseBoolean(SettingsReader.getValue(SettingsConstants.LIMIT_FPS_KEY));
 
         frameBuffer = new FrameBuffer(Constants.START_WIDTH, Constants.START_HEIGHT, FrameBuffer.SAMPLINGMODE_GL_AA_4X);
         frameBuffer.disableRenderer(IRenderer.RENDERER_SOFTWARE);
-        frameBuffer.enableRenderer(IRenderer.RENDERER_OPENGL);
+        frameBuffer.enableRenderer(IRenderer.RENDERER_OPENGL, IRenderer.MODE_OPENGL);
 
         initDisplay();
         initMouse();
@@ -72,6 +76,8 @@ public class Screen {
 
             Display.setDisplayMode(new DisplayMode(Constants.PREFER_WIDTH, Constants.PREFER_HEIGHT));
             frameBuffer.resize(Constants.PREFER_WIDTH, Constants.PREFER_HEIGHT);
+
+            Display.setVSyncEnabled(Boolean.parseBoolean(SettingsReader.getValue(SettingsConstants.USE_VSYNC_KEY)));
         }catch (Exception e){
             ErrorHandler.doError(e);
         }
@@ -87,10 +93,11 @@ public class Screen {
 
             gameEvents.onUpdate(deltaTime * timeScale);
 
-            frameBuffer.display();
             frameBuffer.update();
+            frameBuffer.display();
 
-            Display.sync(Constants.TARGET_FPS);
+            if(isLimitFps)
+                Display.sync(Constants.TARGET_FPS);
 
             deltaTime = (System.nanoTime() - startTime) / 1_000_000_000f;
         }
@@ -107,7 +114,9 @@ public class Screen {
         Keyboard.destroy();
         AL.destroy();
 
+        frameBuffer.disableRenderer(IRenderer.RENDERER_OPENGL);
         frameBuffer.dispose();
+
         System.exit(0);
     }
 
@@ -121,5 +130,9 @@ public class Screen {
 
     public void setTimeScale(float timeScale) {
         this.timeScale = timeScale;
+    }
+
+    public void setLimitFps(boolean limitFps) {
+        isLimitFps = limitFps;
     }
 }

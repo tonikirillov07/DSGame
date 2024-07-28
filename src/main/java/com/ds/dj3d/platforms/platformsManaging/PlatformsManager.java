@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
+import java.util.Iterator;
 import java.util.List;
 
 public class PlatformsManager {
@@ -33,9 +34,7 @@ public class PlatformsManager {
     public void update(float deltaTime){
         try {
             platformList.forEach(platform -> platform.update(deltaTime));
-            for (int i = 0; i < springList.size(); i++) {
-                springList.get(i).update(i == 0);
-            }
+            springList.forEach(Spring::update);
         }catch (ConcurrentModificationException ignore){}
     }
 

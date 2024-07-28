@@ -22,6 +22,7 @@ public class Button {
     private final FrameBuffer frameBuffer;
     private final Color textColor, selectedTextColor;
     private IOnAction onAction;
+    private boolean wasButtonPressed = false;
 
     public static final int DEFAULT_WIDTH = 215;
     public static final int DEFAULT_HEIGHT = 49;
@@ -75,10 +76,14 @@ public class Button {
     }
 
     private void listenMouseEvents() {
-        if(Mouse.isButtonDown(0)) {
+        boolean isButtonPressed = Mouse.isButtonDown(0);
+
+        if (isButtonPressed && !wasButtonPressed) {
             if(isMouseInButton())
                 onClick();
         }
+
+        wasButtonPressed = isButtonPressed;
     }
 
     public void onClick(){

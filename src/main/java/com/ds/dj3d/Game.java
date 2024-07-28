@@ -23,7 +23,6 @@ public class Game implements IGameEvents {
     private static final org.slf4j.Logger log = LoggerFactory.getLogger(Game.class);
     private Screen screen;
     private GameWorld gameWorld;
-    private FreeCamera freeCamera;
     private Player player;
     private GLFont fpsText;
     private PlatformsManager platformsManager;
@@ -47,12 +46,11 @@ public class Game implements IGameEvents {
 
             gameWorld = new GameWorld();
             player = new Player(Loader.loadOBJ("models/dj.obj", "models/dj.mtl", 1f), gameWorld, gameWorld.getCamera());
-            freeCamera = new FreeCamera(gameWorld.getCamera());
             pauseMenu = new PauseMenu(screen);
-            mainMenu = new MainMenu(screen.getFrameBuffer(), this, gameWorld.getCamera());
+            mainMenu = new MainMenu(screen.getFrameBuffer(), this);
             mainMenu.init();
 
-            fpsText = new GLFont(Utils.getFont(Font.BOLD,35f, Constants.ARCADE_CLASSIC_FONT_PATH), GLFont.ENGLISH);
+            fpsText = new GLFont(Utils.getFont(Font.BOLD,20f, Constants.JOYSTIX_MONOSPACE_FONT_PATH), GLFont.ENGLISH);
 
             scoreManager = new ScoreManager(screen.getFrameBuffer());
 
@@ -84,7 +82,7 @@ public class Game implements IGameEvents {
         scoreManager.update();
 
         if(screen.getTimeScale() != 0f)
-            fpsText.blitString(screen.getFrameBuffer(), "FPS: " + Math.round(1 / deltaTime), 30, 50, 1, Color.RED);
+            fpsText.blitString(screen.getFrameBuffer(), "FPS: " + Math.round(1 / deltaTime) + ", " + Utils.roundNumber(deltaTime * 1000) + " ms", 30, 50, 1, Color.RED);
 
         pauseMenu.update();
     }
@@ -120,5 +118,9 @@ public class Game implements IGameEvents {
 
     public Screen getScreen() {
         return screen;
+    }
+
+    public GameWorld getGameWorld() {
+        return gameWorld;
     }
 }
