@@ -20,7 +20,6 @@ public class Platform {
     private final PlatformsManager platformsManager;
     private boolean canGiveScore = true;
     private final ScoreManager scoreManager;
-    private final Color particlesColor;
 
     public Platform(@NotNull Object3D model, Player player, GameWorld gameWorld, PlatformsManager platformsManager, ScoreManager scoreManager, Color particlesColor) {
         this.model = model;
@@ -28,12 +27,14 @@ public class Platform {
         this.gameWorld = gameWorld;
         this.platformsManager = platformsManager;
         this.scoreManager = scoreManager;
-        this.particlesColor = particlesColor;
 
         model.addCollisionListener(new CollisionListener() {
             @Override
             public void collision(CollisionEvent collisionEvent) {
-                player.setParticlesColor(particlesColor);
+                if(collisionEvent.getSource().getUserObject() instanceof Player player) {
+                    player.setParticlesColor(particlesColor);
+                    player.jump(20f, false);
+                }
             }
 
             @Override
@@ -54,7 +55,7 @@ public class Platform {
 
     private void tryGivePlayerScoreIsHeIsNear() {
         if(canGiveScore){
-            if(getDistanceAmongPlayerAndPlatform() <= 5f){
+            if((getDistanceAmongPlayerAndPlatform() <= 10f) & (getModel().getTranslation().y > player.getPosition().y)){
                 scoreManager.addScore();
                 canGiveScore = false;
             }

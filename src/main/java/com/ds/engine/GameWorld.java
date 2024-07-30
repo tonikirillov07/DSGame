@@ -6,6 +6,8 @@ import com.threed.jpct.*;
 import com.threed.jpct.util.SkyBox;
 import org.slf4j.LoggerFactory;
 
+import java.awt.*;
+
 public class GameWorld extends World {
     public static final float GRAVITY_FORCE = 9.81f;
     private static final org.slf4j.Logger log = LoggerFactory.getLogger(GameWorld.class);

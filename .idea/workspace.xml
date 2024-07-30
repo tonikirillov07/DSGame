@@ -5,25 +5,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="61cc59a3-8ae6-4453-adb0-e7c7693db885" name="Changes" comment="7/26/2024">
-      <change afterPath="$PROJECT_DIR$/gameIcon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sounds/click.ogg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/LoseManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/Red Monster/red_monster.mtl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/Red Monster/red_monster.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/Spider/spider.mtl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/Spider/spider.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sounds/monster.ogg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sounds/monsterCrash.ogg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sounds/monsterJump.ogg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/enemies/EnemiesManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/enemies/Enemy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/settings/user_settings.properties" beforeDir="false" afterPath="$PROJECT_DIR$/settings/user_settings.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sounds/Jump.ogg" beforeDir="false" afterPath="$PROJECT_DIR$/sounds/jump.ogg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sounds/Spring.ogg" beforeDir="false" afterPath="$PROJECT_DIR$/sounds/spring.ogg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/Test.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/LoseManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/LoseManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/ScoreManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/ScoreManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/platforms/MovingPlatform.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/platforms/MovingPlatform.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/platforms/Platform.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/platforms/Platform.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/platforms/Spring.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/platforms/Spring.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/platforms/platformsManaging/PlatformsManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/platforms/platformsManaging/PlatformsManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/platforms/platformsManaging/PlatformsSpawner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/platforms/platformsManaging/PlatformsSpawner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/player/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/ui/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/ui/MainMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/ui/PauseMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/ui/PauseMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/engine/Screen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/engine/Screen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/engine/GameWorld.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/engine/GameWorld.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/engine/particles/Particle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/engine/particles/Particle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/engine/ui/button/Button.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/engine/ui/button/Button.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,22 +96,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;Gradle.DSGame [:Main.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.DSGame [:Test.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/JavaProjects/GameOGL/GameWithOpenGl&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Downloaded.Files.Path.Enabled": "false",
+    "Gradle.DSGame [:Main.main()].executor": "Run",
+    "Gradle.DSGame [:Test.main()].executor": "Run",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/JavaProjects/GameOGL/GameWithOpenGl"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\toniw\IdeaProjects\DSGame\sounds" />
@@ -116,10 +122,10 @@
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\toniw\IdeaProjects\DSGame\sounds" />
+      <recent name="C:\Users\toniw\IdeaProjects\DSGame\src\main\java\com\ds\engine\ui" />
       <recent name="C:\Users\toniw\IdeaProjects\DSGame" />
       <recent name="C:\Users\toniw\IdeaProjects\DSGame\src\main\resources\fonts" />
       <recent name="C:\Users\toniw\IdeaProjects\DSGame\src\main\resources\sounds" />
-      <recent name="C:\Users\toniw\IdeaProjects\DSGame\src\main\resources\textures\skybox" />
     </key>
   </component>
   <component name="RunManager" selected="Application.Main">
@@ -203,7 +209,15 @@
       <option name="project" value="LOCAL" />
       <updated>1722156549422</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="7/26/2024">
+      <option name="closed" value="true" />
+      <created>1722168166252</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1722168166252</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">

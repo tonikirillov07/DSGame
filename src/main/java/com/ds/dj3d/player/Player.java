@@ -16,14 +16,15 @@ public class Player {
     private final GameWorld gameWorld;
     private final Camera camera;
     private Object3D player;
-    private boolean isOnGround = false, previousIsOnGround = false, isJumping = false;
-    private final SimpleVector ELLIPSOID = new SimpleVector(2, 2, 2);
+    private boolean isOnGround = false, previousIsOnGround = false, isJumping = false, isJumpingBySpring = false, isDead;
+    private final SimpleVector ELLIPSOID = new SimpleVector(1, 2, 1);
     private float jumpDestinationY = 0;
     private static final float JUMP_SPEED = 10f;
     private static final float PLAYER_SPEED = 10f;
     private static final float DEFAULT_JUMP_HEIGHT = 20f;
     private List<Particle> particleList;
     private Color particlesColor;
+    private float previousAngleToRotate;
 
     public Player(Object3D[] playerModel, GameWorld gameWorld, Camera camera) {
         this.playerModel = playerModel;
@@ -33,10 +34,11 @@ public class Player {
 
     public void init(){
         player = Object3D.mergeAll(playerModel);
+        player.setRotationMatrix(new Matrix());
         player.rotateX((float) Math.toRadians(180));
         player.setCollisionMode(Object3D.COLLISION_CHECK_SELF);
         player.translate(new SimpleVector(0, -5f, 0));
-        player.setName("Player");
+        player.setUserObject(this);
         player.build();
 
         camera.setPosition(new SimpleVector(getPosition().x, getPosition().y, getPosition().z - 20f));
@@ -48,21 +50,43 @@ public class Player {
         particleList = new ArrayList<>();
     }
 
-    public void jump(float jumpHeight) {
+    public void jump(float jumpHeight, boolean isOnSpring) {
+        if(isDead)
+            return;
+
+        isJumpingBySpring = isOnSpring;
+
         if(isOnGround & !isJumping){
+            createParticles();
+            Utils.playSound("/sounds/jump.ogg");
+
             jumpDestinationY = getPosition().y - jumpHeight;
             isJumping = true;
         }
     }
 
     private void move(float deltaTime) {
-        byte direction;
-        direction = (byte) (Keyboard.isKeyDown(Keyboard.KEY_A) ? 1 : Keyboard.isKeyDown(Keyboard.KEY_D) ? -1: 0);
+        if(isDead)
+            return;
+
+        byte direction = (byte) ((Keyboard.isKeyDown(Keyboard.KEY_A) || Keyboard.isKeyDown(Keyboard.KEY_LEFT)) ? 1 :
+                (Keyboard.isKeyDown(Keyboard.KEY_D) || Keyboard.isKeyDown(Keyboard.KEY_RIGHT)) ? -1: 0);
 
         if(direction == 0)
             return;
 
+        float angleToRotate = direction == 1 ? 180 : -180;
+        rotate(angleToRotate);
+
         player.translate(direction * PLAYER_SPEED * deltaTime * GameWorld.GRAVITY_FORCE, 0f, 0f);
+    }
+
+    private void rotate(float angleToRotate) {
+        if(previousAngleToRotate == angleToRotate)
+            return;
+
+        player.rotateY((float) Math.toRadians(angleToRotate));
+        previousAngleToRotate = angleToRotate;
     }
 
     public void update(float deltaTime) {
@@ -85,11 +109,18 @@ public class Player {
     }
 
     private void applyCamera() {
-        camera.align(player);
-        camera.rotateZ((float) Math.toRadians(180));
-        camera.rotateY((float) Math.toRadians(30));
-        camera.rotateX((float) Math.toRadians(-20));
-        camera.setPosition(new SimpleVector(getPosition().x - 30, getPosition().y - 20, getPosition().z + 90));
+        float cameraDistanceX = 40f;
+        float cameraDistanceZ = 120f;
+        float cameraHeight = 20f;
+
+        float playerRotationY = player.getRotationMatrix().getYAxis().y;
+
+        SimpleVector playerPosition = getPosition();
+        float cameraPosX = (playerPosition.x + (cameraDistanceX * (float) Math.sin(playerRotationY)));
+        float cameraPosZ = (playerPosition.z + (cameraDistanceZ * (float) Math.cos(playerRotationY)));
+
+        camera.setPosition(new SimpleVector(cameraPosX, playerPosition.y - cameraHeight, cameraPosZ));
+        camera.lookAt(playerPosition);
     }
 
     private void applyGravity(float deltaTime) {
@@ -119,12 +150,8 @@ public class Player {
     private void onIsOnGroundChanged(boolean isOnGround){
         previousIsOnGround = isOnGround;
 
-        if(isOnGround) {
-            createParticles();
-
-            jump(DEFAULT_JUMP_HEIGHT);
-            Utils.playSound("/sounds/jump.ogg");
-        }
+        if(isOnGround & isJumpingBySpring)
+            isJumpingBySpring = false;
     }
 
     private void createParticles() {
@@ -132,11 +159,23 @@ public class Player {
             Particle particle = new Particle(0.3f, 0.2f, 0.3f, particlesColor, gameWorld);
 
             particle.setOrigin(new SimpleVector(player.getTranslation().x, player.getTranslation().y +  player.getScale(), player.getTranslation().z));
-            particle.setVelocity(new SimpleVector(Math.random(),  1 - (Math.random() / 2f), Math.random()));
+            particle.setRandomVelocity();
 
             particleList.add(particle);
             gameWorld.addObject(particle);
         }
+    }
+
+    public void kill(){
+        Utils.playSound("/sounds/monsterCrash.ogg");
+
+        player.setCollisionMode(Object3D.COLLISION_CHECK_NONE);
+        isDead = true;
+    }
+
+    public void makeAlive() {
+        player.setCollisionMode(Object3D.COLLISION_CHECK_SELF);
+        isDead = false;
     }
 
     public SimpleVector getPosition() {

@@ -15,7 +15,7 @@ import java.util.Objects;
 public class ScoreManager {
     private final GLFont currentPlayerScoreFont, playerBestScoreFont;
     private final FrameBuffer frameBuffer;
-    private int score;
+    private int score = 60;
     private final int bestScore;
 
     public ScoreManager(FrameBuffer frameBuffer) {

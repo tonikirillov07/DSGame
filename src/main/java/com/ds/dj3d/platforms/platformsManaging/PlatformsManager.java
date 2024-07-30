@@ -27,7 +27,7 @@ public class PlatformsManager {
         platformList = new ArrayList<>();
         springList = new ArrayList<>();
 
-        platformsSpawner = new PlatformsSpawner(player, gameWorld, this, shadowsManager, scoreManager, springList, platformList,null);
+        platformsSpawner = new PlatformsSpawner(player, gameWorld, this, shadowsManager, scoreManager, springList, platformList);
         platformsSpawner.create(10, true);
     }
 
@@ -35,6 +35,8 @@ public class PlatformsManager {
         try {
             platformList.forEach(platform -> platform.update(deltaTime));
             springList.forEach(Spring::update);
+
+            platformsSpawner.getEnemiesManager().update(deltaTime);
         }catch (ConcurrentModificationException ignore){}
     }
 

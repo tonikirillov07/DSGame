@@ -24,11 +24,8 @@ public class LoseManager {
 
     private void findLosePlatform(){
         try {
-            System.out.println(platformList.size());
-
             if(player.getPosition().y > platformList.get(0).getModel().getTranslation().y)
                 platformsSpawner.recreate(10);
-
         }catch (ConcurrentModificationException ignore){}
     }
 }

@@ -1,11 +1,11 @@
 package com.ds.dj3d.platforms.platformsManaging;
 
 import com.ds.Constants;
-import com.ds.dj3d.LoseManager;
 import com.ds.dj3d.ScoreManager;
 import com.ds.dj3d.platforms.MovingPlatform;
 import com.ds.dj3d.platforms.Platform;
 import com.ds.dj3d.platforms.Spring;
+import com.ds.dj3d.enemies.EnemiesManager;
 import com.ds.dj3d.player.Player;
 import com.ds.engine.GameWorld;
 import com.ds.engine.shadows.ShadowsManager;
@@ -32,9 +32,9 @@ public class PlatformsSpawner {
     private final ScoreManager scoreManager;
     private final List<Spring> springList;
     private final List<Platform> platformList;
-    private LoseManager loseManager;
+    private final EnemiesManager enemiesManager;
 
-    public PlatformsSpawner(Player player, GameWorld gameWorld, PlatformsManager platformsManager, ShadowsManager shadowsManager, ScoreManager scoreManager, List<Spring> springList, List<Platform> platformList, LoseManager loseManager) {
+    public PlatformsSpawner(Player player, GameWorld gameWorld, PlatformsManager platformsManager, ShadowsManager shadowsManager, ScoreManager scoreManager, List<Spring> springList, List<Platform> platformList) {
         this.player = player;
         this.gameWorld = gameWorld;
         this.platformsManager = platformsManager;
@@ -42,7 +42,8 @@ public class PlatformsSpawner {
         this.scoreManager = scoreManager;
         this.springList = springList;
         this.platformList = platformList;
-        this.loseManager = loseManager;
+
+        enemiesManager = new EnemiesManager(gameWorld, player);
 
         greenPlatformModel = Object3D.mergeAll((Loader.loadOBJ("models/Green Platform/green_platform.obj", "models/Green Platform/green_platform.mtl", 1f)));
         bluePlatformModel = Object3D.mergeAll((Loader.loadOBJ("models/Blue Platform/blue_platform.obj", "models/Blue Platform/blue_platform.mtl", 1f)));
@@ -80,6 +81,9 @@ public class PlatformsSpawner {
             if(i == (count / 2))
                 platform.setCreateMorePlatformWhenPlayerIsNear(true);
 
+            if(scoreManager.getScore() >= Constants.ENEMIES_SPAWN_SCORE & Utils.getChance(0.03f))
+                enemiesManager.spawnEnemy(platform, platformList);
+
             platformList.add(platform);
         }
 
@@ -89,6 +93,9 @@ public class PlatformsSpawner {
     public void recreate(int count){
         deleteAll();
         scoreManager.resetScore();
+
+        player.makeAlive();
+
         create(count, true);
     }
 
@@ -143,5 +150,9 @@ public class PlatformsSpawner {
         log.info("Created platform with type {}", platformType);
 
         return object3D;
+    }
+
+    public EnemiesManager getEnemiesManager() {
+        return enemiesManager;
     }
 }

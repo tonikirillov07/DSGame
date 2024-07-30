@@ -35,6 +35,7 @@ public class Particle extends Object3D {
         enableLazyTransformations();
         setAdditionalColor(color);
         setTranslationMatrix(new Matrix());
+        setCollisionMode(COLLISION_CHECK_SELF);
         build();
 
         reset();
@@ -42,6 +43,10 @@ public class Particle extends Object3D {
 
     public void setVelocity(SimpleVector velocity) {
         this.velocity.set(velocity);
+    }
+
+    public void setRandomVelocity(){
+        velocity.set(new SimpleVector(Math.random(), Math.random(), Math.random()));
     }
 
     public void reset(){

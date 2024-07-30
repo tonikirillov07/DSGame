@@ -6,6 +6,7 @@ import com.ds.engine.ui.button.Button;
 import com.ds.engine.ui.text.GLFont;
 import com.ds.engine.utils.Utils;
 import com.threed.jpct.FrameBuffer;
+import org.lwjgl.input.Mouse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -35,6 +36,8 @@ public class MainMenu {
         titleFont = new GLFont(Utils.getFont(Font.BOLD, 100f, Constants.ARCADE_CLASSIC_FONT_PATH));
         developerFont = new GLFont(Utils.getFont(Font.BOLD, 30f, Constants.ROBOTO_BOLD_FONT_PATH));
         settingsMenu = new SettingsMenu(frameBuffer, game.getGameWorld(), game.getScreen());
+
+        Mouse.setGrabbed(false);
 
         createButtons();
     }

@@ -17,6 +17,8 @@ public final class Constants {
     public static final float GAME_SPACE_START_X = -20f;
     public static final float GAME_SPACE_END_X = 40f;
 
+    public static final int ENEMIES_SPAWN_SCORE = 60;
+
     public static final Texture BUTTON_DEFAULT_BACKGROUND_TEXTURE = new Texture(Main.class.getResourceAsStream("/textures/ui/ButtonBackground.png"));
     public static final Texture BUTTON_RED_BACKGROUND_TEXTURE = new Texture(Main.class.getResourceAsStream("/textures/ui/ButtonBackground2.png"));
 }

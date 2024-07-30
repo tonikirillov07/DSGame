@@ -4,8 +4,10 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import com.ds.dj3d.settings.SettingsReader;
+import com.ds.engine.utils.SimplexNoise;
 import com.threed.jpct.*;
 import com.threed.jpct.util.*;
 
@@ -46,14 +48,7 @@ public class Test implements IPaintListener {
     private Ticker ticker = new Ticker(15);
 
     public static void main(String[] args) throws Exception {
-        float toAngle = (float) Math.toRadians(30);
-        List<Float> angles = new ArrayList<>();
-
-        for (float i = 0; i < toAngle; i += (float) Math.toRadians(1)) {
-            angles.add(i);
-        }
-
-        System.out.println(angles);
+        System.out.println();
     }
 
     public Test() {

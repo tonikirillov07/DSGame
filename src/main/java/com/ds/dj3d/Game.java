@@ -5,6 +5,7 @@ import com.ds.dj3d.platforms.platformsManaging.PlatformsManager;
 import com.ds.dj3d.player.Player;
 import com.ds.dj3d.ui.MainMenu;
 import com.ds.dj3d.ui.PauseMenu;
+import com.ds.engine.camera.FreeCamera;
 import com.ds.engine.utils.ErrorHandler;
 import com.ds.engine.GameWorld;
 import com.ds.engine.IGameEvents;
@@ -45,8 +46,7 @@ public class Game implements IGameEvents {
             initConfigs();
 
             gameWorld = new GameWorld();
-            player = new Player(Loader.loadOBJ("models/dj.obj", "models/dj.mtl", 1f), gameWorld, gameWorld.getCamera());
-            pauseMenu = new PauseMenu(screen);
+            pauseMenu = new PauseMenu(screen, this);
             mainMenu = new MainMenu(screen.getFrameBuffer(), this);
             mainMenu.init();
 
@@ -63,6 +63,8 @@ public class Game implements IGameEvents {
     public void startGame(){
         Mouse.setGrabbed(true);
 
+        player = new Player(Loader.loadOBJ("models/dj.obj", "models/dj.mtl", 1f), gameWorld, gameWorld.getCamera());
+
         shadowsManager = new ShadowsManager(gameWorld, screen.getFrameBuffer());
         platformsManager = new PlatformsManager();
 
@@ -73,21 +75,9 @@ public class Game implements IGameEvents {
         loseManager = new LoseManager(player, platformsManager.getPlatformList(), platformsManager.getPlatformsSpawner());
 
         shadowsManager.getShadowHelper().addCaster(player.getPlayer());
+        SettingsManager.updateGameSettings(gameWorld, screen);
 
         isGameStarted = true;
-    }
-
-    private void updateGame(float deltaTime){
-        shadowsManager.update(player);
-        player.update(deltaTime);
-        platformsManager.update(deltaTime);
-        scoreManager.update();
-        loseManager.update();
-
-        if(screen.getTimeScale() != 0f)
-            fpsText.blitString(screen.getFrameBuffer(), "FPS: " + Math.round(1 / deltaTime) + ", " + Utils.roundNumber(deltaTime * 1000) + " ms", 30, 50, 1, Color.RED);
-
-        pauseMenu.update();
     }
 
     private void initConfigs() {
@@ -111,6 +101,19 @@ public class Game implements IGameEvents {
             updateGame(deltaTime);
     }
 
+    private void updateGame(float deltaTime){
+        shadowsManager.update(player);
+        player.update(deltaTime);
+        platformsManager.update(deltaTime);
+        scoreManager.update();
+        loseManager.update();
+
+        if(screen.getTimeScale() != 0f)
+            fpsText.blitString(screen.getFrameBuffer(), "FPS: " + Math.round(1 / deltaTime) + ", " + Utils.roundNumber(deltaTime * 1000) + " ms", 30, 50, 1, Color.RED);
+
+        pauseMenu.update();
+    }
+
     @Override
     public void onDispose() {
         if(shadowsManager != null)
@@ -125,5 +128,17 @@ public class Game implements IGameEvents {
 
     public GameWorld getGameWorld() {
         return gameWorld;
+    }
+
+    public PlatformsManager getPlatformsManager() {
+        return platformsManager;
+    }
+
+    public void setGameStarted(boolean gameStarted) {
+        isGameStarted = gameStarted;
+    }
+
+    public MainMenu getMainMenu() {
+        return mainMenu;
     }
 }
