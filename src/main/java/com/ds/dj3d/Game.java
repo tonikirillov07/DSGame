@@ -7,7 +7,8 @@ import com.ds.dj3d.ui.MainMenu;
 import com.ds.dj3d.ui.PauseMenu;
 import com.ds.engine.utils.ErrorHandler;
 import com.ds.engine.GameWorld;
-import com.ds.engine.IGameEvents;
+import com.ds.engine.utils.SoundsManager;
+import com.ds.engine.utils.events.IGameEvents;
 import com.ds.engine.Screen;
 import com.ds.engine.shadows.ShadowsManager;
 import com.ds.engine.ui.text.GLFont;
@@ -90,25 +91,25 @@ public class Game implements IGameEvents {
     }
 
     @Override
-    public void onUpdate(float deltaTime) {
+    public void onUpdate(float deltaTime, int fps) {
         gameWorld.update(screen.getFrameBuffer());
 
         if(mainMenu.isOpen())
             mainMenu.update(deltaTime);
 
         if(isGameStarted)
-            updateGame(deltaTime);
+            updateGame(deltaTime, fps);
     }
 
-    private void updateGame(float deltaTime){
+    private void updateGame(float deltaTime, int fps){
+        if(screen.getTimeScale() != 0f)
+            fpsText.blitString(screen.getFrameBuffer(), "FPS: " + fps + ", " + Utils.roundNumber(deltaTime * 1000) + " ms", 30, 50, 1, Color.RED);
+
         shadowsManager.update(player);
         player.update(deltaTime);
         platformsManager.update(deltaTime);
         scoreManager.update();
         loseManager.update();
-
-        if(screen.getTimeScale() != 0f)
-            fpsText.blitString(screen.getFrameBuffer(), "FPS: " + Math.round(1 / deltaTime) + ", " + Utils.roundNumber(deltaTime * 1000) + " ms", 30, 50, 1, Color.RED);
 
         pauseMenu.update();
     }

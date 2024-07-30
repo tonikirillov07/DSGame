@@ -116,7 +116,6 @@ public class PlatformsSpawner {
 
     private void addSpring(@NotNull Object3D platformObject){
         Object3D springObject = new Object3D(springModel);
-        springObject.setName(Spring.SPRING_NAME);
         springObject.translate(new SimpleVector(platformObject.getTranslation().x + springObject.getScale(), platformObject.getTranslation().y - (springObject.getScale() / 2), platformObject.getTranslation().z));
         springObject.build();
 

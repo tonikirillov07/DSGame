@@ -3,7 +3,7 @@ package com.ds.dj3d.player;
 import com.ds.Constants;
 import com.ds.engine.GameWorld;
 import com.ds.engine.particles.Particle;
-import com.ds.engine.utils.Utils;
+import com.ds.engine.utils.SoundsManager;
 import com.threed.jpct.*;
 import org.lwjgl.input.Keyboard;
 
@@ -22,7 +22,6 @@ public class Player {
     private float jumpDestinationY = 0;
     private static final float JUMP_SPEED = 10f;
     private static final float PLAYER_SPEED = 10f;
-    private static final float DEFAULT_JUMP_HEIGHT = 20f;
     private List<Particle> particleList;
     private Color particlesColor;
     private float previousAngleToRotate;
@@ -59,7 +58,7 @@ public class Player {
 
         if(isOnGround & !isJumping){
             createParticles();
-            Utils.playSound("/sounds/jump.ogg");
+            SoundsManager.getInstance().playSound("/sounds/jump.ogg");
 
             jumpDestinationY = getPosition().y - jumpHeight;
             isJumping = true;
@@ -168,7 +167,7 @@ public class Player {
     }
 
     public void kill(){
-        Utils.playSound("/sounds/monsterCrash.ogg");
+        SoundsManager.getInstance().playSound("/sounds/monsterCrash.ogg");
 
         player.setCollisionMode(Object3D.COLLISION_CHECK_NONE);
         isDead = true;

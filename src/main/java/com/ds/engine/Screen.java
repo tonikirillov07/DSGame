@@ -4,32 +4,27 @@ import com.ds.Constants;
 import com.ds.dj3d.settings.SettingsConstants;
 import com.ds.dj3d.settings.SettingsReader;
 import com.ds.engine.utils.ErrorHandler;
+import com.ds.engine.utils.events.IGameEvents;
 import com.threed.jpct.Config;
 import com.threed.jpct.FrameBuffer;
 import com.threed.jpct.IRenderer;
-import org.jetbrains.annotations.NotNull;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 
 import org.lwjgl.openal.AL;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
-import org.newdawn.slick.opengl.ImageIOImageData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.awt.image.DataBufferByte;
-import java.awt.image.WritableRaster;
-import java.io.File;
-import java.nio.ByteBuffer;
+import java.util.concurrent.TimeUnit;
 
 public class Screen {
     private static final Logger log = LoggerFactory.getLogger(Screen.class);
     private FrameBuffer frameBuffer;
     private float deltaTime, timeScale = 1f;
     private final IGameEvents gameEvents;
+    private int frameCount = 0;
     private boolean isLimitFps;
 
     public Screen(IGameEvents gameEvents) {
@@ -42,7 +37,7 @@ public class Screen {
         Config.glWindowName = Constants.TITLE;
         isLimitFps = Boolean.parseBoolean(SettingsReader.getValue(SettingsConstants.LIMIT_FPS_KEY));
 
-        frameBuffer = new FrameBuffer(Constants.START_WIDTH, Constants.START_HEIGHT, FrameBuffer.SAMPLINGMODE_GL_AA_4X);
+        frameBuffer = new FrameBuffer(Constants.START_WIDTH, Constants.START_HEIGHT, FrameBuffer.SAMPLINGMODE_NORMAL);
         frameBuffer.disableRenderer(IRenderer.RENDERER_SOFTWARE);
         frameBuffer.enableRenderer(IRenderer.RENDERER_OPENGL, IRenderer.MODE_OPENGL);
 
@@ -95,12 +90,23 @@ public class Screen {
     private void startUpdate() {
         log.info("Starting main loop...");
 
+        long lastTime = 0L;
+        int lastFps = 0;
+
         while (!Display.isCloseRequested()){
+            long currentTime = TimeUnit.NANOSECONDS.toMillis(System.nanoTime());
             float startTime = System.nanoTime();
+
+            if(lastTime < currentTime - 1000){
+                lastTime = currentTime;
+                lastFps = frameCount;
+                frameCount = 0;
+            }
 
             frameBuffer.clear();
 
-            gameEvents.onUpdate(deltaTime * timeScale);
+            frameCount++;
+            gameEvents.onUpdate(deltaTime * timeScale, lastFps);
 
             frameBuffer.update();
             frameBuffer.display();

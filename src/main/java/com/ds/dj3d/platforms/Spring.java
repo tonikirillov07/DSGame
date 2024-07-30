@@ -3,6 +3,7 @@ package com.ds.dj3d.platforms;
 import com.ds.Constants;
 import com.ds.dj3d.player.Player;
 import com.ds.engine.GameWorld;
+import com.ds.engine.utils.SoundsManager;
 import com.ds.engine.utils.Utils;
 import com.threed.jpct.CollisionEvent;
 import com.threed.jpct.CollisionListener;
@@ -12,7 +13,6 @@ public class Spring {
     private final Object3D springObject;
     private final Player player;
     private final GameWorld gameWorld;
-    public static final String SPRING_NAME = "Spring";
 
     public Spring(Object3D springObject, Player player, GameWorld gameWorld) {
         this.springObject = springObject;
@@ -24,7 +24,7 @@ public class Spring {
         springObject.addCollisionListener(new CollisionListener() {
             @Override
             public void collision(CollisionEvent collisionEvent) {
-                Utils.playSound("/sounds/spring.ogg");
+                SoundsManager.getInstance().playSound("/sounds/spring.ogg");
                 player.jump(90f, true);
             }
 

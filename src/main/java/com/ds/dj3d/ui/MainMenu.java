@@ -4,6 +4,7 @@ import com.ds.Constants;
 import com.ds.dj3d.Game;
 import com.ds.engine.ui.button.Button;
 import com.ds.engine.ui.text.GLFont;
+import com.ds.engine.utils.SoundsManager;
 import com.ds.engine.utils.Utils;
 import com.threed.jpct.FrameBuffer;
 import org.lwjgl.input.Mouse;
@@ -38,6 +39,7 @@ public class MainMenu {
         settingsMenu = new SettingsMenu(frameBuffer, game.getGameWorld(), game.getScreen());
 
         Mouse.setGrabbed(false);
+        SoundsManager.getInstance().stopAll();
 
         createButtons();
     }

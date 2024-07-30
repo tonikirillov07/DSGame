@@ -3,8 +3,7 @@ package com.ds.dj3d.enemies;
 import com.ds.Constants;
 import com.ds.dj3d.player.Player;
 import com.ds.engine.GameWorld;
-import com.ds.engine.utils.ErrorHandler;
-import com.ds.engine.utils.Utils;
+import com.ds.engine.utils.SoundsManager;
 import com.threed.jpct.CollisionEvent;
 import com.threed.jpct.CollisionListener;
 import com.threed.jpct.Object3D;
@@ -17,7 +16,7 @@ public class Enemy {
     private final GameWorld gameWorld;
     private final Player player;
     private boolean isDestroyed;
-    private Sound sound;
+    private int enemySound;
     private boolean isKilled;
     private float destroyTimer;
 
@@ -40,7 +39,7 @@ public class Enemy {
                     enemyModel.setCollisionMode(Object3D.COLLISION_CHECK_NONE);
 
                     if(player.getPosition().y < enemyModel.getTranslation().y - enemyModel.getScale()){
-                        Utils.playSound("/sounds/monsterJump.ogg");
+                        SoundsManager.getInstance().playSound("/sounds/monsterJump.ogg");
                         isKilled = true;
                     } else{
                         player.kill();
@@ -58,22 +57,18 @@ public class Enemy {
     public void update(float deltaTime){
         removeEnemyIfPlayerIsFarEnough();
 
-        if(destroyTimer < 5)
-            destroyTimer += deltaTime;
-        else
-            destroy();
-
-        if(isKilled)
+        if(isKilled){
             enemyModel.translate(new SimpleVector(0f, 5f * GameWorld.GRAVITY_FORCE * deltaTime, 0f));
+
+            if(destroyTimer < 5)
+                destroyTimer += deltaTime;
+            else
+                destroy();
+        }
     }
 
     private void startSound(){
-        try {
-            sound = new Sound("/sounds/monster.ogg");
-            sound.loop();
-        }catch (Exception e){
-            ErrorHandler.doError(e);
-        }
+        enemySound = SoundsManager.getInstance().loopSound("/sounds/monster.ogg");
     }
 
     private void removeEnemyIfPlayerIsFarEnough() {
@@ -85,8 +80,8 @@ public class Enemy {
         if(gameWorld.containsObject(enemyModel))
             gameWorld.removeObject(enemyModel);
 
-        if(sound.playing())
-            sound.stop();
+        SoundsManager.getInstance().stopSoundById(enemySound);
+        System.out.println("Enemy destroyed");
 
         isDestroyed = true;
     }

@@ -5,8 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="61cc59a3-8ae6-4453-adb0-e7c7693db885" name="Changes" comment="7/26/2024">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ds/engine/utils/SoundsManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings/user_settings.properties" beforeDir="false" afterPath="$PROJECT_DIR$/settings/user_settings.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/enemies/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/enemies/Enemy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/platforms/Spring.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/platforms/Spring.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/platforms/platformsManaging/PlatformsSpawner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/platforms/platformsManaging/PlatformsSpawner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/player/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/ui/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/ui/MainMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/engine/IGameEvents.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/engine/utils/events/IGameEvents.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/engine/Screen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/engine/Screen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/engine/ui/button/Button.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/engine/ui/button/Button.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/engine/ui/button/SwitchButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/engine/ui/button/SwitchButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/engine/utils/IOnAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/engine/utils/events/IOnAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/engine/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/engine/utils/Utils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,8 +51,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Enum" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -210,7 +223,15 @@
       <option name="project" value="LOCAL" />
       <updated>1722357663467</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="7/26/2024">
+      <option name="closed" value="true" />
+      <created>1722358048732</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1722358048732</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">

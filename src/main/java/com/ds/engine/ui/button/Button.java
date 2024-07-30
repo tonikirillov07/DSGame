@@ -1,7 +1,8 @@
 package com.ds.engine.ui.button;
 
 import com.ds.engine.ui.text.GLFont;
-import com.ds.engine.utils.IOnAction;
+import com.ds.engine.utils.SoundsManager;
+import com.ds.engine.utils.events.IOnAction;
 import com.ds.engine.utils.Utils;
 import com.threed.jpct.FrameBuffer;
 import com.threed.jpct.Texture;
@@ -88,7 +89,7 @@ public class Button {
     }
 
     public void onClick(){
-        Utils.playSound("/sounds/click.ogg");
+        SoundsManager.getInstance().playSound("/sounds/click.ogg");
 
         if(onAction != null)
             onAction.onAction();
