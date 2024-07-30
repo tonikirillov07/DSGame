@@ -99,6 +99,8 @@ public class Game implements IGameEvents {
 
         if(isGameStarted)
             updateGame(deltaTime, fps);
+
+        SoundsManager.getInstance().update();
     }
 
     private void updateGame(float deltaTime, int fps){
