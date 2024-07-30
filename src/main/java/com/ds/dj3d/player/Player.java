@@ -1,5 +1,6 @@
 package com.ds.dj3d.player;
 
+import com.ds.Constants;
 import com.ds.engine.GameWorld;
 import com.ds.engine.particles.Particle;
 import com.ds.engine.utils.Utils;
@@ -35,7 +36,7 @@ public class Player {
     public void init(){
         player = Object3D.mergeAll(playerModel);
         player.setRotationMatrix(new Matrix());
-        player.rotateX((float) Math.toRadians(180));
+        player.rotateX(Constants.DEGREES_180);
         player.setCollisionMode(Object3D.COLLISION_CHECK_SELF);
         player.translate(new SimpleVector(0, -5f, 0));
         player.setUserObject(this);

@@ -23,11 +23,12 @@ public class EnemiesManager {
         this.gameWorld = gameWorld;
         this.player = player;
 
-        Object3D redMonster = Object3D.mergeAll(Loader.loadOBJ("models/Red Monster/red_monster.obj", "models/Red Monster/red_monster.mtl", 3f));
-        Object3D spider = Object3D.mergeAll(Loader.loadOBJ("models/Spider/spider.obj", "models/Spider/spider.mtl", 3f));
-        spider.rotateY((float) Math.toRadians(180));
+        Object3D redMonster = Object3D.mergeAll(Loader.loadOBJ("models/Red Monster/red_monster.obj", "models/Red Monster/red_monster.mtl", Constants.ENEMIES_SCALE));
+        Object3D spider = Object3D.mergeAll(Loader.loadOBJ("models/Spider/spider.obj", "models/Spider/spider.mtl", Constants.ENEMIES_SCALE));
+        spider.rotateY(Constants.DEGREES_180);
+        Object3D blueMonster = Object3D.mergeAll(Loader.loadOBJ("models/Blue Monster/blueMonster.obj", "models/Blue Monster/blueMonster.mtl", Constants.ENEMIES_SCALE));
 
-        enemies = new Object3D[]{redMonster, spider};
+        enemies = new Object3D[]{redMonster, spider, blueMonster};
         enemiesList = new ArrayList<>();
     }
 
@@ -39,7 +40,7 @@ public class EnemiesManager {
 
         Object3D object3D = new Object3D(enemies[random.nextInt(enemies.length)]);
         object3D.setCollisionMode(Object3D.COLLISION_CHECK_OTHERS);
-        object3D.rotateZ((float) Math.toRadians(180));
+        object3D.rotateZ(Constants.DEGREES_180);
 
         float randomX = random.nextFloat(Constants.GAME_SPACE_START_X, Constants.GAME_SPACE_END_X);
         float y = platform.getModel().getTranslation().y - object3D.getScale();

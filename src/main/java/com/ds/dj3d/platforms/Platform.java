@@ -20,6 +20,7 @@ public class Platform {
     private final PlatformsManager platformsManager;
     private boolean canGiveScore = true;
     private final ScoreManager scoreManager;
+    private final Color particlesColor;
 
     public Platform(@NotNull Object3D model, Player player, GameWorld gameWorld, PlatformsManager platformsManager, ScoreManager scoreManager, Color particlesColor) {
         this.model = model;
@@ -27,14 +28,13 @@ public class Platform {
         this.gameWorld = gameWorld;
         this.platformsManager = platformsManager;
         this.scoreManager = scoreManager;
+        this.particlesColor = particlesColor;
 
         model.addCollisionListener(new CollisionListener() {
             @Override
             public void collision(CollisionEvent collisionEvent) {
-                if(collisionEvent.getSource().getUserObject() instanceof Player player) {
-                    player.setParticlesColor(particlesColor);
-                    player.jump(20f, false);
-                }
+                if(collisionEvent.getSource().getUserObject() instanceof Player)
+                    onCollisionWithPlayer();
             }
 
             @Override
@@ -42,6 +42,11 @@ public class Platform {
                 return false;
             }
         });
+    }
+
+    public void onCollisionWithPlayer(){
+        player.setParticlesColor(particlesColor);
+        player.jump(20f, false);
     }
 
     public void update(float deltaTime) {

@@ -5,7 +5,6 @@ import com.ds.dj3d.platforms.platformsManaging.PlatformsManager;
 import com.ds.dj3d.player.Player;
 import com.ds.dj3d.ui.MainMenu;
 import com.ds.dj3d.ui.PauseMenu;
-import com.ds.engine.camera.FreeCamera;
 import com.ds.engine.utils.ErrorHandler;
 import com.ds.engine.GameWorld;
 import com.ds.engine.IGameEvents;
