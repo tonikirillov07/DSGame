@@ -8,6 +8,7 @@ import com.ds.engine.utils.Utils;
 import com.threed.jpct.CollisionEvent;
 import com.threed.jpct.CollisionListener;
 import com.threed.jpct.Object3D;
+import com.threed.jpct.SimpleVector;
 import org.jetbrains.annotations.NotNull;
 import org.newdawn.slick.Sound;
 
@@ -17,6 +18,8 @@ public class Enemy {
     private final Player player;
     private boolean isDestroyed;
     private Sound sound;
+    private boolean isKilled;
+    private float destroyTimer;
 
     public Enemy(@NotNull Object3D enemyModel, GameWorld gameWorld, Player player) {
         this.enemyModel = enemyModel;
@@ -34,11 +37,12 @@ public class Enemy {
             @Override
             public void collision(CollisionEvent collisionEvent) {
                 if(collisionEvent.getSource().getUserObject() instanceof Player player){
+                    enemyModel.setCollisionMode(Object3D.COLLISION_CHECK_NONE);
+
                     if(player.getPosition().y < enemyModel.getTranslation().y - enemyModel.getScale()){
                         Utils.playSound("/sounds/monsterJump.ogg");
-                        destroy();
+                        isKilled = true;
                     } else{
-                        enemyModel.setCollisionMode(Object3D.COLLISION_CHECK_NONE);
                         player.kill();
                     }
                 }
@@ -53,6 +57,14 @@ public class Enemy {
 
     public void update(float deltaTime){
         removeEnemyIfPlayerIsFarEnough();
+
+        if(destroyTimer < 5)
+            destroyTimer += deltaTime;
+        else
+            destroy();
+
+        if(isKilled)
+            enemyModel.translate(new SimpleVector(0f, 5f * GameWorld.GRAVITY_FORCE * deltaTime, 0f));
     }
 
     private void startSound(){
