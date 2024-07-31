@@ -1,10 +1,12 @@
 package com.ds.dj3d;
 
 import com.ds.Constants;
+import com.ds.Main;
 import com.ds.dj3d.platforms.platformsManaging.PlatformsManager;
 import com.ds.dj3d.player.Player;
 import com.ds.dj3d.ui.MainMenu;
 import com.ds.dj3d.ui.PauseMenu;
+import com.ds.engine.camera.FreeCamera;
 import com.ds.engine.utils.ErrorHandler;
 import com.ds.engine.GameWorld;
 import com.ds.engine.utils.SoundsManager;
@@ -15,7 +17,9 @@ import com.ds.engine.ui.text.GLFont;
 import com.ds.engine.utils.Utils;
 import com.threed.jpct.*;
 import org.lwjgl.input.Mouse;
+import org.lwjgl.opengl.GL11;
 import org.slf4j.LoggerFactory;
+import org.w3c.dom.Text;
 
 import java.awt.*;
 
@@ -32,6 +36,7 @@ public class Game implements IGameEvents {
     private MainMenu mainMenu;
     private LoseManager loseManager;
     private boolean isGameStarted;
+    private FreeCamera freeCamera;
 
     public void start(){
         screen = new Screen(this);
@@ -50,6 +55,7 @@ public class Game implements IGameEvents {
             mainMenu = new MainMenu(screen.getFrameBuffer(), this);
             mainMenu.init();
 
+            freeCamera = new FreeCamera(gameWorld.getCamera());
             fpsText = new GLFont(Utils.getFont(Font.BOLD,20f, Constants.JOYSTIX_MONOSPACE_FONT_PATH), GLFont.ENGLISH);
 
             scoreManager = new ScoreManager(screen.getFrameBuffer());
@@ -109,6 +115,8 @@ public class Game implements IGameEvents {
         platformsManager.update(deltaTime);
         scoreManager.update();
         loseManager.update();
+
+        freeCamera.move(deltaTime);
 
         if(screen.getTimeScale() != 0f)
             fpsText.blitString(screen.getFrameBuffer(), "FPS: " + fps + ", " + Utils.roundNumber(deltaTime * 1000) + " ms", 30, 50, 1, Color.RED);
