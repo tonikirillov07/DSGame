@@ -75,7 +75,7 @@ public class Player {
         if(direction == 0)
             return;
 
-        float angleToRotate = direction == 1 ? 180 : -180;
+        float angleToRotate = direction == 1 ? Constants.DEGREES_180 : -Constants.DEGREES_180;
         rotate(angleToRotate);
 
         player.translate(direction * PLAYER_SPEED * deltaTime * GameWorld.GRAVITY_FORCE, 0f, 0f);
@@ -85,7 +85,7 @@ public class Player {
         if(previousAngleToRotate == angleToRotate)
             return;
 
-        player.rotateY((float) Math.toRadians(angleToRotate));
+        player.rotateY(angleToRotate);
         previousAngleToRotate = angleToRotate;
     }
 

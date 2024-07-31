@@ -5,9 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="61cc59a3-8ae6-4453-adb0-e7c7693db885" name="Changes" comment="7/26/2024">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/FromToPointObjectMovement.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/enemies/monsters/BlueMonster.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/enemies/monsters/MonsterType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ds/engine/utils/events/IOnDirectionChanged.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings/user_settings.properties" beforeDir="false" afterPath="$PROJECT_DIR$/settings/user_settings.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/enemies/EnemiesManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/enemies/EnemiesManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/enemies/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/enemies/Enemy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/platforms/MovingPlatform.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/platforms/MovingPlatform.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/player/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/engine/Screen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/engine/Screen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/engine/utils/SoundsManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/engine/utils/SoundsManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -40,9 +49,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Class" />
         <option value="Enum" />
         <option value="Interface" />
-        <option value="Class" />
       </list>
     </option>
   </component>
@@ -228,7 +237,15 @@
       <option name="project" value="LOCAL" />
       <updated>1722365529963</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="7/26/2024">
+      <option name="closed" value="true" />
+      <created>1722366001073</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1722366001073</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">

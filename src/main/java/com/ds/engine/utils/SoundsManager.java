@@ -25,7 +25,7 @@ public class SoundsManager {
         return instance;
     }
 
-    public int playSound(String source){
+    public Sound playSound(String source){
         try {
             if(Boolean.parseBoolean(SettingsReader.getValue(SettingsConstants.USE_SOUNDS_KEY))){
                 Sound sound = new Sound(source);
@@ -35,16 +35,16 @@ public class SoundsManager {
 
                 log.info("Sound {} played and added to list. Sounds in list: {}", source, allSoundsList.size());
 
-                return allSoundsList.size() - 1;
+                return sound;
             }
         }catch (Exception e){
             ErrorHandler.doError(e);
         }
 
-        return -1;
+        return null;
     }
 
-    public int loopSound(String source){
+    public Sound loopSound(String source){
         try {
             if(Boolean.parseBoolean(SettingsReader.getValue(SettingsConstants.USE_SOUNDS_KEY))){
                 Sound sound = new Sound(source);
@@ -54,26 +54,26 @@ public class SoundsManager {
 
                 log.info("Sound {} looped and added to list. Sounds in list: {}", sound, allSoundsList.size());
 
-                return allSoundsList.size() - 1;
+                return sound;
             }
         }catch (Exception e){
             ErrorHandler.doError(e);
         }
 
-        return -1;
+        return null;
     }
 
-    public void stopSoundById(int id){
-        Sound sound = allSoundsList.get(id);
-        if(sound == null){
-            log.error("No sound with id {} in sounds list", id);
+    public void stopSound(Sound soundObject){
+        int soundId = allSoundsList.indexOf(soundObject);
+        if(soundId == -1){
+            log.error("No sound with {} in sounds list", soundObject);
             return;
         }
 
-        sound.stop();
-        allSoundsList.remove(id);
+        soundObject.stop();
+        allSoundsList.remove(soundObject);
 
-        log.info("Sound with id {} stopped and deleted from the list. Sounds in list: {}", id, allSoundsList.size());
+        log.info("Sound with id {} stopped and deleted from the list. Sounds in list: {}", soundId, allSoundsList.size());
     }
 
     public void stopAll(){

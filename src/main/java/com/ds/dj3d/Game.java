@@ -104,14 +104,14 @@ public class Game implements IGameEvents {
     }
 
     private void updateGame(float deltaTime, int fps){
-        if(screen.getTimeScale() != 0f)
-            fpsText.blitString(screen.getFrameBuffer(), "FPS: " + fps + ", " + Utils.roundNumber(deltaTime * 1000) + " ms", 30, 50, 1, Color.RED);
-
         shadowsManager.update(player);
         player.update(deltaTime);
         platformsManager.update(deltaTime);
         scoreManager.update();
         loseManager.update();
+
+        if(screen.getTimeScale() != 0f)
+            fpsText.blitString(screen.getFrameBuffer(), "FPS: " + fps + ", " + Utils.roundNumber(deltaTime * 1000) + " ms", 30, 50, 1, Color.RED);
 
         pauseMenu.update();
     }

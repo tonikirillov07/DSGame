@@ -111,8 +111,7 @@ public class Screen {
             frameBuffer.update();
             frameBuffer.display();
 
-            if(isLimitFps)
-                Display.sync(Constants.TARGET_FPS);
+            Display.sync(isLimitFps ? Constants.TARGET_FPS : -1);
 
             deltaTime = (System.nanoTime() - startTime) / 1_000_000_000f;
         }

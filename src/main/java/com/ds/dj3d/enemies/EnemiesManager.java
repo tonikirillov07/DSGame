@@ -1,6 +1,8 @@
 package com.ds.dj3d.enemies;
 
 import com.ds.Constants;
+import com.ds.dj3d.enemies.monsters.BlueMonster;
+import com.ds.dj3d.enemies.monsters.MonsterType;
 import com.ds.dj3d.platforms.Platform;
 import com.ds.dj3d.player.Player;
 import com.ds.engine.GameWorld;
@@ -25,8 +27,13 @@ public class EnemiesManager {
 
         Object3D redMonster = Object3D.mergeAll(Loader.loadOBJ("models/Red Monster/red_monster.obj", "models/Red Monster/red_monster.mtl", Constants.ENEMIES_SCALE));
         Object3D spider = Object3D.mergeAll(Loader.loadOBJ("models/Spider/spider.obj", "models/Spider/spider.mtl", Constants.ENEMIES_SCALE));
-        spider.rotateY(Constants.DEGREES_180);
         Object3D blueMonster = Object3D.mergeAll(Loader.loadOBJ("models/Blue Monster/blueMonster.obj", "models/Blue Monster/blueMonster.mtl", Constants.ENEMIES_SCALE));
+
+        redMonster.setUserObject(MonsterType.RED_MONSTER);
+        spider.setUserObject(MonsterType.SPIDER);
+        blueMonster.setUserObject(MonsterType.BLUE_MONSTER);
+
+        spider.rotateY(Constants.DEGREES_180);
 
         enemies = new Object3D[]{redMonster, spider, blueMonster};
         enemiesList = new ArrayList<>();
@@ -63,9 +70,22 @@ public class EnemiesManager {
         object3D.translate(enemyPosition);
 
         gameWorld.addObject(object3D);
-        enemiesList.add(new Enemy(object3D, gameWorld, player));
+        addEnemy(object3D);
 
         spawnTimer = 0f;
+    }
+
+    private void addEnemy(@NotNull Object3D object3D) {
+        Enemy enemy = null;
+
+        if(object3D.getUserObject() instanceof MonsterType monsterType){
+            switch (monsterType){
+                case BLUE_MONSTER -> enemy = new BlueMonster(object3D, gameWorld, player);
+                default -> enemy = new Enemy(object3D, gameWorld, player);
+            }
+        }
+
+        enemiesList.add(enemy);
     }
 
     public void update(float deltaTime){

@@ -9,6 +9,7 @@ import com.threed.jpct.CollisionListener;
 import com.threed.jpct.Object3D;
 import com.threed.jpct.SimpleVector;
 import org.jetbrains.annotations.NotNull;
+import org.newdawn.slick.Sound;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,7 +19,7 @@ public class Enemy {
     private final GameWorld gameWorld;
     private final Player player;
     private boolean isDestroyed;
-    private int enemySound;
+    private Sound enemySound;
     private boolean isKilled;
     private float destroyTimer;
 
@@ -84,7 +85,7 @@ public class Enemy {
         if(gameWorld.containsObject(enemyModel))
             gameWorld.removeObject(enemyModel);
 
-        SoundsManager.getInstance().stopSoundById(enemySound);
+        SoundsManager.getInstance().stopSound(enemySound);
 
         log.info("Enemy destroyed");
 
@@ -93,5 +94,9 @@ public class Enemy {
 
     public boolean isDestroyed() {
         return isDestroyed;
+    }
+
+    public Object3D getEnemyModel() {
+        return enemyModel;
     }
 }
