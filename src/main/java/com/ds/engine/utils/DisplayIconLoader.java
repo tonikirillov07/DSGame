@@ -24,7 +24,7 @@ public final class DisplayIconLoader {
         try {
             image = ImageIO.read(Objects.requireNonNull(Main.class.getClassLoader().getResource(filepath)));
         } catch (IOException e) {
-            ErrorHandler.doError(e);
+            ErrorHandler.processError(e);
         }
 
         if(image == null)

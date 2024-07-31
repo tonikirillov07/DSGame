@@ -6,11 +6,7 @@ import com.threed.jpct.FrameBuffer;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import javax.imageio.ImageIO;
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.nio.ByteBuffer;
 import java.text.DecimalFormat;
 import java.util.Objects;
 import java.util.Random;
@@ -23,7 +19,7 @@ public final class Utils {
             Font font = Font.createFont(Font.PLAIN, Objects.requireNonNull(Main.class.getResourceAsStream(fontPath)));
             return font.deriveFont(style, size);
         }catch (Exception e){
-            ErrorHandler.doError(e);
+            ErrorHandler.processError(e);
         }
 
         return null;

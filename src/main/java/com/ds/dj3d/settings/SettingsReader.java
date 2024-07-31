@@ -17,7 +17,7 @@ public final class SettingsReader {
             properties.load(fileReader);
             fileReader.close();
         }catch (Exception e){
-            ErrorHandler.doError(e);
+            ErrorHandler.processError(e);
         }
     }
 

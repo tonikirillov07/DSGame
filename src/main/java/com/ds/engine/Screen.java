@@ -5,7 +5,6 @@ import com.ds.dj3d.settings.SettingsConstants;
 import com.ds.dj3d.settings.SettingsReader;
 import com.ds.engine.utils.DisplayIconLoader;
 import com.ds.engine.utils.ErrorHandler;
-import com.ds.engine.utils.Utils;
 import com.ds.engine.utils.events.IGameEvents;
 import com.threed.jpct.Config;
 import com.threed.jpct.FrameBuffer;
@@ -58,7 +57,7 @@ public class Screen {
             if(!Keyboard.isCreated())
                 Keyboard.create();
         }catch (Exception e){
-            ErrorHandler.doError(e);
+            ErrorHandler.processError(e);
         }
     }
 
@@ -69,7 +68,7 @@ public class Screen {
             if(!Mouse.isCreated())
                 Mouse.create();
         }catch (Exception e){
-            ErrorHandler.doError(e);
+            ErrorHandler.processError(e);
         }
     }
 
@@ -88,7 +87,7 @@ public class Screen {
 
             Display.setVSyncEnabled(Boolean.parseBoolean(SettingsReader.getValue(SettingsConstants.USE_VSYNC_KEY)));
         }catch (Exception e){
-            ErrorHandler.doError(e);
+            ErrorHandler.processError(e);
         }
     }
 

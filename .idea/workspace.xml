@@ -5,12 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="61cc59a3-8ae6-4453-adb0-e7c7693db885" name="Changes" comment="7/26/2024">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ds/engine/utils/DisplayIconLoader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/icon.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/Test.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/settings/SettingsReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/settings/SettingsReader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/engine/Screen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/engine/Screen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/engine/utils/DisplayIconLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/engine/utils/DisplayIconLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/engine/utils/ErrorHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/engine/utils/ErrorHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/engine/utils/SoundsManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/engine/utils/SoundsManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/engine/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/engine/utils/Utils.java" afterDir="false" />
     </list>
@@ -111,7 +112,7 @@
       <recent name="C:\Users\toniw\IdeaProjects\DSGame" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Application.Test">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.ds.Main" />
       <module name="DSGame.main" />
@@ -272,7 +273,15 @@
       <option name="project" value="LOCAL" />
       <updated>1722427685155</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="7/26/2024">
+      <option name="closed" value="true" />
+      <created>1722446116220</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1722446116220</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">

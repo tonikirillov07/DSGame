@@ -56,7 +56,7 @@ public class Game implements IGameEvents {
 
             log.info("Main game started");
         }catch (Exception e){
-            ErrorHandler.doError(e);
+            ErrorHandler.processError(e);
         }
     }
 

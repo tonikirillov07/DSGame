@@ -39,7 +39,7 @@ public final class SoundsManager {
                 return sound;
             }
         }catch (Exception e){
-            ErrorHandler.doError(e);
+            ErrorHandler.processError(e);
         }
 
         return null;
@@ -58,7 +58,7 @@ public final class SoundsManager {
                 return sound;
             }
         }catch (Exception e){
-            ErrorHandler.doError(e);
+            ErrorHandler.processError(e);
         }
 
         return null;
