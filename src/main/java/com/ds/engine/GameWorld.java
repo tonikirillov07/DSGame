@@ -67,6 +67,12 @@ public class GameWorld extends World {
         textureManager.addTexture(SkyboxConstants.SKYBOX_DOWN_NAME, new Texture(Main.class.getResourceAsStream(SkyboxConstants.SKYBOX_DOWN)));
     }
 
+    public void resetCamera(){
+        Camera camera = getCamera();
+        camera.setPosition(SimpleVector.ORIGIN);
+        camera.lookAt(SimpleVector.ORIGIN);
+    }
+
     @Override
     public void dispose() {
         super.dispose();

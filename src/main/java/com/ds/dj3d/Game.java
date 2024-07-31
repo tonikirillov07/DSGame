@@ -36,7 +36,6 @@ public class Game implements IGameEvents {
     private MainMenu mainMenu;
     private LoseManager loseManager;
     private boolean isGameStarted;
-    private FreeCamera freeCamera;
 
     public void start(){
         screen = new Screen(this);
@@ -55,7 +54,6 @@ public class Game implements IGameEvents {
             mainMenu = new MainMenu(screen.getFrameBuffer(), this);
             mainMenu.init();
 
-            freeCamera = new FreeCamera(gameWorld.getCamera());
             fpsText = new GLFont(Utils.getFont(Font.BOLD,20f, Constants.JOYSTIX_MONOSPACE_FONT_PATH), GLFont.ENGLISH);
 
             scoreManager = new ScoreManager(screen.getFrameBuffer());
@@ -115,8 +113,6 @@ public class Game implements IGameEvents {
         platformsManager.update(deltaTime);
         scoreManager.update();
         loseManager.update();
-
-        freeCamera.move(deltaTime);
 
         if(screen.getTimeScale() != 0f)
             fpsText.blitString(screen.getFrameBuffer(), "FPS: " + fps + ", " + Utils.roundNumber(deltaTime * 1000) + " ms", 30, 50, 1, Color.RED);

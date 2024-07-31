@@ -40,6 +40,7 @@ public class MainMenu {
 
         Mouse.setGrabbed(false);
         SoundsManager.getInstance().stopAll();
+        game.getGameWorld().resetCamera();
 
         createButtons();
     }

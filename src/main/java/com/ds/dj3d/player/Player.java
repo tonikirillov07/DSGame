@@ -91,7 +91,7 @@ public class Player {
     }
 
     public void update(float deltaTime) {
-        //applyCamera();
+        applyCamera();
         move(deltaTime);
         applyGravity(deltaTime);
 
