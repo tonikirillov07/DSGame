@@ -3,15 +3,15 @@ package com.ds.engine;
 import com.ds.Constants;
 import com.ds.dj3d.settings.SettingsConstants;
 import com.ds.dj3d.settings.SettingsReader;
+import com.ds.engine.utils.DisplayIconLoader;
 import com.ds.engine.utils.ErrorHandler;
+import com.ds.engine.utils.Utils;
 import com.ds.engine.utils.events.IGameEvents;
 import com.threed.jpct.Config;
 import com.threed.jpct.FrameBuffer;
 import com.threed.jpct.IRenderer;
-import org.lwjgl.Sys;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
-
 import org.lwjgl.openal.AL;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
@@ -32,11 +32,10 @@ public class Screen {
 
     public Screen(IGameEvents gameEvents) {
         this.gameEvents = gameEvents;
-
-        timer = new Timer();
+        this.timer = new Timer();
     }
 
-    public void start(){
+    public void start() {
         log.info("Starting frame buffer...");
 
         Config.glWindowName = Constants.TITLE;
@@ -82,6 +81,7 @@ public class Screen {
                 Display.create();
 
             Display.setResizable(true);
+            Display.setIcon(DisplayIconLoader.loadIcon("icon.png"));
 
             Display.setDisplayMode(new DisplayMode(Constants.PREFER_WIDTH, Constants.PREFER_HEIGHT));
             frameBuffer.resize(Constants.PREFER_WIDTH, Constants.PREFER_HEIGHT);

@@ -1,12 +1,10 @@
 package com.ds.dj3d;
 
 import com.ds.Constants;
-import com.ds.Main;
 import com.ds.dj3d.platforms.platformsManaging.PlatformsManager;
 import com.ds.dj3d.player.Player;
 import com.ds.dj3d.ui.MainMenu;
 import com.ds.dj3d.ui.PauseMenu;
-import com.ds.engine.camera.FreeCamera;
 import com.ds.engine.utils.ErrorHandler;
 import com.ds.engine.GameWorld;
 import com.ds.engine.utils.SoundsManager;
@@ -17,9 +15,7 @@ import com.ds.engine.ui.text.GLFont;
 import com.ds.engine.utils.Utils;
 import com.threed.jpct.*;
 import org.lwjgl.input.Mouse;
-import org.lwjgl.opengl.GL11;
 import org.slf4j.LoggerFactory;
-import org.w3c.dom.Text;
 
 import java.awt.*;
 

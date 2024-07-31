@@ -2,6 +2,7 @@ package com.ds.engine.utils;
 
 import com.ds.dj3d.settings.SettingsConstants;
 import com.ds.dj3d.settings.SettingsReader;
+import org.jetbrains.annotations.Nullable;
 import org.newdawn.slick.Sound;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,7 +10,7 @@ import org.slf4j.LoggerFactory;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SoundsManager {
+public final class SoundsManager {
     private static final Logger log = LoggerFactory.getLogger(SoundsManager.class);
     private static SoundsManager instance = null;
     private final List<Sound> allSoundsList;
@@ -25,7 +26,7 @@ public class SoundsManager {
         return instance;
     }
 
-    public Sound playSound(String source){
+    public @Nullable Sound playSound(String source){
         try {
             if(Boolean.parseBoolean(SettingsReader.getValue(SettingsConstants.USE_SOUNDS_KEY))){
                 Sound sound = new Sound(source);
