@@ -8,12 +8,14 @@ import com.ds.engine.utils.events.IGameEvents;
 import com.threed.jpct.Config;
 import com.threed.jpct.FrameBuffer;
 import com.threed.jpct.IRenderer;
+import org.lwjgl.Sys;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 
 import org.lwjgl.openal.AL;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
+import org.lwjgl.util.Timer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -26,9 +28,12 @@ public class Screen {
     private final IGameEvents gameEvents;
     private int frameCount = 0;
     private boolean isLimitFps;
+    private final Timer timer;
 
     public Screen(IGameEvents gameEvents) {
         this.gameEvents = gameEvents;
+
+        timer = new Timer();
     }
 
     public void start(){
@@ -95,7 +100,7 @@ public class Screen {
 
         while (!Display.isCloseRequested()){
             long currentTime = TimeUnit.NANOSECONDS.toMillis(System.nanoTime());
-            float startTime = System.nanoTime();
+            Timer.tick();
 
             if(lastTime < currentTime - 1000){
                 lastTime = currentTime;
@@ -113,7 +118,8 @@ public class Screen {
 
             Display.sync(isLimitFps ? Constants.TARGET_FPS : -1);
 
-            deltaTime = (System.nanoTime() - startTime) / 1_000_000_000f;
+            deltaTime = timer.getTime();
+            timer.reset();
         }
 
         dispose();

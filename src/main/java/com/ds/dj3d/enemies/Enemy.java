@@ -1,6 +1,7 @@
 package com.ds.dj3d.enemies;
 
 import com.ds.Constants;
+import com.ds.dj3d.DestroyableObject;
 import com.ds.dj3d.player.Player;
 import com.ds.engine.GameWorld;
 import com.ds.engine.utils.SoundsManager;
@@ -13,12 +14,11 @@ import org.newdawn.slick.Sound;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class Enemy {
+public class Enemy extends DestroyableObject {
     private static final Logger log = LoggerFactory.getLogger(Enemy.class);
     private final Object3D enemyModel;
     private final GameWorld gameWorld;
     private final Player player;
-    private boolean isDestroyed;
     private Sound enemySound;
     private boolean isKilled;
     private float destroyTimer;
@@ -40,11 +40,14 @@ public class Enemy {
         enemyModel.addCollisionListener(new CollisionListener() {
             @Override
             public void collision(CollisionEvent collisionEvent) {
-                if(collisionEvent.getSource().getUserObject() instanceof Player player){
+                if(collisionEvent.getSource().getUserObject() instanceof Player){
                     enemyModel.setCollisionMode(Object3D.COLLISION_CHECK_NONE);
 
                     if(player.getPosition().y < enemyModel.getTranslation().y - enemyModel.getScale()){
+                        SoundsManager.getInstance().stopSound(enemySound);
                         SoundsManager.getInstance().playSound("/sounds/monsterJump.ogg");
+                        
+                        player.jump(Player.DEFAULT_PLAYER_JUMP_HEIGHT, false);
                         isKilled = true;
                     } else{
                         player.kill();
@@ -81,20 +84,16 @@ public class Enemy {
             destroy();
     }
 
-    private void destroy(){
+    @Override
+    public void destroy(){
+        super.destroy();
+
         if(gameWorld.containsObject(enemyModel))
             gameWorld.removeObject(enemyModel);
 
-        SoundsManager.getInstance().stopSound(enemySound);
-
         log.info("Enemy destroyed");
-
-        isDestroyed = true;
     }
 
-    public boolean isDestroyed() {
-        return isDestroyed;
-    }
 
     public Object3D getEnemyModel() {
         return enemyModel;

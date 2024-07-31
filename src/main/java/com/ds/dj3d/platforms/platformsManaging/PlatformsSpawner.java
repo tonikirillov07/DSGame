@@ -9,6 +9,7 @@ import com.ds.dj3d.enemies.EnemiesManager;
 import com.ds.dj3d.player.Player;
 import com.ds.engine.GameWorld;
 import com.ds.engine.shadows.ShadowsManager;
+import com.ds.engine.utils.SoundsManager;
 import com.ds.engine.utils.Utils;
 import com.threed.jpct.Loader;
 import com.threed.jpct.Object3D;
@@ -90,7 +91,14 @@ public class PlatformsSpawner {
         log.info("Created platforms");
     }
 
+    public void createPlatformsWithRandomCount(boolean spawnPlayer){
+        int count = new Random().nextInt(10, 25);
+        create(count, spawnPlayer);
+    }
+
     public void recreate(int count){
+        SoundsManager.getInstance().stopAll();
+
         deleteAll();
         scoreManager.resetScore();
 

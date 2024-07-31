@@ -1,5 +1,6 @@
 package com.ds.dj3d.platforms;
 
+import com.ds.dj3d.DestroyableObject;
 import com.ds.dj3d.ScoreManager;
 import com.ds.dj3d.platforms.platformsManaging.PlatformsManager;
 import com.ds.dj3d.player.Player;
@@ -12,7 +13,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
 
-public class Platform {
+public class Platform extends DestroyableObject {
     private final Object3D model;
     private final Player player;
     private final GameWorld gameWorld;
@@ -46,7 +47,7 @@ public class Platform {
 
     public void onCollisionWithPlayer(){
         player.setParticlesColor(particlesColor);
-        player.jump(20f, false);
+        player.jump(Player.DEFAULT_PLAYER_JUMP_HEIGHT, false);
     }
 
     public void update(float deltaTime) {
@@ -73,19 +74,23 @@ public class Platform {
                 if(platformsManager == null)
                     return;
 
-                platformsManager.getPlatformsSpawner().create(10,false);
+                platformsManager.getPlatformsSpawner().createPlatformsWithRandomCount(false);
                 isCreateMorePlatformWhenPlayerIsNear = false;
             }
         }
     }
 
     private void removeWhenPlayerIsFarEnough() {
-        if(getDistanceAmongPlayerAndPlatform() >= Constants.PLATFORM_DELETE_DISTANCE & (model.getTranslation().y > player.getPosition().y)){
-            if(gameWorld.containsObject(model)){
-                gameWorld.removeObject(model);
-                platformsManager.getPlatformList().remove(this);
-            }
-        }
+        if(getDistanceAmongPlayerAndPlatform() >= Constants.PLATFORM_DELETE_DISTANCE & (model.getTranslation().y > player.getPosition().y))
+            destroy();
+    }
+
+    @Override
+    public void destroy() {
+        super.destroy();
+
+        if(gameWorld.containsObject(model))
+            gameWorld.removeObject(model);
     }
 
     private float getDistanceAmongPlayerAndPlatform(){

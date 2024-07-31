@@ -70,7 +70,7 @@ public class Game implements IGameEvents {
 
         player.init();
         shadowsManager.init();
-        platformsManager.init(player, gameWorld, shadowsManager, scoreManager, loseManager);
+        platformsManager.init(player, gameWorld, shadowsManager, scoreManager);
 
         loseManager = new LoseManager(player, platformsManager.getPlatformList(), platformsManager.getPlatformsSpawner());
 

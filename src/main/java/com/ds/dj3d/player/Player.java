@@ -22,6 +22,7 @@ public class Player {
     private float jumpDestinationY = 0;
     private static final float JUMP_SPEED = 10f;
     private static final float PLAYER_SPEED = 10f;
+    public static final float DEFAULT_PLAYER_JUMP_HEIGHT = 20f;
     private List<Particle> particleList;
     private Color particlesColor;
     private float previousAngleToRotate;

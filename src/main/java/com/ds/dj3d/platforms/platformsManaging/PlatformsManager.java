@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
+import java.util.Iterator;
 import java.util.List;
 
 public class PlatformsManager {
@@ -21,22 +22,30 @@ public class PlatformsManager {
     private List<Spring> springList;
     private PlatformsSpawner platformsSpawner;
 
-    public void init(Player player, GameWorld gameWorld, ShadowsManager shadowsManager, ScoreManager scoreManager, LoseManager loseManager){
+    public void init(Player player, GameWorld gameWorld, ShadowsManager shadowsManager, ScoreManager scoreManager){
         log.info("Initializing platforms manager...");
 
         platformList = new ArrayList<>();
         springList = new ArrayList<>();
 
         platformsSpawner = new PlatformsSpawner(player, gameWorld, this, shadowsManager, scoreManager, springList, platformList);
-        platformsSpawner.create(10, true);
+        platformsSpawner.createPlatformsWithRandomCount(true);
     }
 
     public void update(float deltaTime){
         try {
-            platformList.forEach(platform -> platform.update(deltaTime));
-            springList.forEach(Spring::update);
+            Iterator<Platform> platformIterator = platformList.iterator();
+            while (platformIterator.hasNext()){
+                Platform platform = platformIterator.next();
+
+                if(platform.isDestroyed())
+                    platformIterator.remove();
+                else
+                    platform.update(deltaTime);
+            }
 
             platformsSpawner.getEnemiesManager().update(deltaTime);
+            springList.removeIf(Spring::isDestroyed);
         }catch (ConcurrentModificationException ignore){}
     }
 

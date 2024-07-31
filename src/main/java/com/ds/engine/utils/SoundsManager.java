@@ -84,6 +84,9 @@ public class SoundsManager {
     }
 
     public void update(){
+        if(allSoundsList.isEmpty())
+            return;
+
         allSoundsList.removeIf(sound -> !sound.playing());
     }
 }
