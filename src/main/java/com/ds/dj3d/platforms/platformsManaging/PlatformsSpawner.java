@@ -144,7 +144,7 @@ public class PlatformsSpawner {
     }
 
     private @NotNull Object3D getCurrentPlatform(boolean isFirst){
-        if(Utils.getChance(0.20f * ((float) scoreManager.getScore() / 100)) & !isFirst)
+        if(Utils.getChance(Math.min(0.20f * ((float) scoreManager.getScore() / 100), 0.5f)) & !isFirst)
             return getPlatformWithType(bluePlatformModel, PlatformType.MOVING);
        else
            return getPlatformWithType(greenPlatformModel, PlatformType.DEFAULT);

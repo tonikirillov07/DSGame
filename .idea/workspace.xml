@@ -6,14 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="61cc59a3-8ae6-4453-adb0-e7c7693db885" name="Changes" comment="7/26/2024">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings/user_settings.properties" beforeDir="false" afterPath="$PROJECT_DIR$/settings/user_settings.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/settings/SettingsReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/settings/SettingsReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/engine/Screen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/engine/Screen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/engine/utils/DisplayIconLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/engine/utils/DisplayIconLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/engine/utils/ErrorHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/engine/utils/ErrorHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/engine/utils/SoundsManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/engine/utils/SoundsManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/engine/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/engine/utils/Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/platforms/platformsManaging/PlatformsSpawner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/platforms/platformsManaging/PlatformsSpawner.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -281,7 +276,15 @@
       <option name="project" value="LOCAL" />
       <updated>1722446116220</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="7/26/2024">
+      <option name="closed" value="true" />
+      <created>1722447392061</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1722447392061</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
