@@ -1,6 +1,7 @@
 package com.ds.dj3d.platforms.platformsManaging;
 
 import com.ds.Constants;
+import com.ds.dj3d.Chances;
 import com.ds.dj3d.ScoreManager;
 import com.ds.dj3d.platforms.MovingPlatform;
 import com.ds.dj3d.platforms.Platform;
@@ -61,7 +62,7 @@ public class PlatformsSpawner {
             Object3D object3D = new Object3D(currentPlatform);
             object3D.setScale(3f);
 
-            if(Utils.getChance(0.3f))
+            if(Utils.getChance(Chances.SPRING_SPAWN_CHANCE))
                 addSpring(object3D);
 
             Platform platform = definePlatform(currentPlatform, object3D);
@@ -82,7 +83,7 @@ public class PlatformsSpawner {
             if(i == (count / 2))
                 platform.setCreateMorePlatformWhenPlayerIsNear(true);
 
-            if(scoreManager.getScore() >= Constants.ENEMIES_SPAWN_SCORE & Utils.getChance(0.03f))
+            if(scoreManager.getScore() >= Constants.ENEMIES_SPAWN_SCORE & Utils.getChance(Chances.ENEMY_SPAWN_CHANCE))
                 enemiesManager.spawnEnemy(platform, platformList);
 
             platformList.add(platform);
@@ -101,6 +102,7 @@ public class PlatformsSpawner {
 
         deleteAll();
         scoreManager.resetScore();
+        scoreManager.loadBestScore();
 
         player.makeAlive();
 
@@ -118,8 +120,12 @@ public class PlatformsSpawner {
                 gameWorld.removeObject(spring.getSpringObject());
         });
 
+        enemiesManager.deleteAll();
+
         platformList.clear();
         springList.clear();
+
+        log.info("Every platforms were deleted");
     }
 
     private void addSpring(@NotNull Object3D platformObject){
@@ -144,7 +150,7 @@ public class PlatformsSpawner {
     }
 
     private @NotNull Object3D getCurrentPlatform(boolean isFirst){
-        if(Utils.getChance(Math.min(0.20f * ((float) scoreManager.getScore() / 100), 0.5f)) & !isFirst)
+        if(Utils.getChance(Chances.calculateBluePlatformChance(scoreManager.getScore())) & !isFirst)
             return getPlatformWithType(bluePlatformModel, PlatformType.MOVING);
        else
            return getPlatformWithType(greenPlatformModel, PlatformType.DEFAULT);

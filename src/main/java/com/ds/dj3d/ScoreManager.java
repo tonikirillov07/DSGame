@@ -16,7 +16,7 @@ public class ScoreManager {
     private final GLFont currentPlayerScoreFont, playerBestScoreFont;
     private final FrameBuffer frameBuffer;
     private int score = 60;
-    private final int bestScore;
+    private int bestScore;
 
     public ScoreManager(FrameBuffer frameBuffer) {
         this.frameBuffer = frameBuffer;
@@ -24,6 +24,10 @@ public class ScoreManager {
         currentPlayerScoreFont = new GLFont(Utils.getFont(Font.BOLD, 26f, Constants.JOYSTIX_MONOSPACE_FONT_PATH));
         playerBestScoreFont = currentPlayerScoreFont;
 
+        loadBestScore();
+    }
+
+    public void loadBestScore() {
         bestScore = Integer.parseInt(Objects.requireNonNull(SettingsReader.getValue(SettingsConstants.BEST_SCORE_KEY)));
     }
 

@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="61cc59a3-8ae6-4453-adb0-e7c7693db885" name="Changes" comment="7/26/2024">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/Chances.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings/user_settings.properties" beforeDir="false" afterPath="$PROJECT_DIR$/settings/user_settings.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/ScoreManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/ScoreManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/enemies/EnemiesManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/enemies/EnemiesManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/platforms/platformsManaging/PlatformsSpawner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ds/dj3d/platforms/platformsManaging/PlatformsSpawner.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -75,22 +76,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Downloaded.Files.Path.Enabled": "false",
-    "Gradle.DSGame [:Main.main()].executor": "Run",
-    "Gradle.DSGame [:Test.main()].executor": "Run",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/toniw/IdeaProjects/DSGame"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Gradle.DSGame [:Main.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.DSGame [:Test.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/toniw/IdeaProjects/DSGame&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\toniw\IdeaProjects\DSGame" />
@@ -107,7 +108,7 @@
       <recent name="C:\Users\toniw\IdeaProjects\DSGame" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Test">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.ds.Main" />
       <module name="DSGame.main" />
@@ -284,7 +285,15 @@
       <option name="project" value="LOCAL" />
       <updated>1722447392061</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="7/26/2024">
+      <option name="closed" value="true" />
+      <created>1722490117992</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1722490117992</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">

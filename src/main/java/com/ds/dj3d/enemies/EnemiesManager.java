@@ -10,10 +10,13 @@ import com.threed.jpct.Loader;
 import com.threed.jpct.Object3D;
 import com.threed.jpct.SimpleVector;
 import org.jetbrains.annotations.NotNull;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.*;
 
 public class EnemiesManager {
+    private static final Logger log = LoggerFactory.getLogger(EnemiesManager.class);
     private final Object3D[] enemies;
     private final GameWorld gameWorld;
     private float spawnTimer = 0f;
@@ -101,5 +104,10 @@ public class EnemiesManager {
             else
                 enemy.update(deltaTime);
         }
+    }
+
+    public void deleteAll(){
+        enemiesList.forEach(Enemy::destroy);
+        log.info("Every enemies were deleted");
     }
 }
